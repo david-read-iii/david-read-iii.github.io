@@ -1,0 +1,35 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #1C2128;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #2D333B;
+    padding: 1em;
+}
+
+main {
+    padding: 1em;
+}
+
+footer {
+    background-color: #2D333B;
+    padding: 1em;
+}
+
+h3,
+p {
+    margin: 0;
+}
+
+.content-container {
+    min-width: 48em;
+    max-width: 48em;
+    margin: auto;
+}
