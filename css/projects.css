@@ -1,0 +1,10 @@
+.card {
+    background-color: #22272E;
+    border-color: #444C56;
+    width: 24rem;
+}
+
+.card-footer {
+    background-color: #22272E;
+    border-width: 0;
+}
