@@ -1,0 +1,11 @@
+.form-control {
+    background-color: #22272E;
+    border-color: #444C56;
+    color: white;
+}
+
+.form-control:focus {
+    background-color: #22272E;
+    border-color: #444C56;
+    color: white;
+}

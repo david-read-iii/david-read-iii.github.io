@@ -12,7 +12,7 @@
 
     <!-- Import developer CSS. -->
     <link href="css/global.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
+    <link href="css/contact.css" rel="stylesheet">
 
     <!-- Import core Bootstrap JS.-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
     <script src="https://kit.fontawesome.com/b06b68bfd6.js" crossorigin="anonymous"></script>
 
     <!-- Document title. -->
-    <title>Home | David Read's Portfolio</title>
+    <title>Contact | David Read's Portfolio</title>
 
 </head>
 
@@ -40,11 +40,11 @@
 
             <!-- Navbar nav items component.-->
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="index.html">Home</a>
+                <a class="nav-item nav-link" href="index.html">Home</a>
                 <a class="nav-item nav-link" href="about.html">About</a>
                 <a class="nav-item nav-link" href="projects.html">Projects</a>
                 <a class="nav-item nav-link" href="resume.html">Resume</a>
-                <a class="nav-item nav-link" href="contact.html">Contact</a>
+                <a class="nav-item nav-link active" href="contact.html">Contact</a>
             </div>
 
         </nav>
@@ -52,14 +52,38 @@
     </header>
 
     <!-- Main content. -->
-    <main class="text-center p-5">
+    <main class="p-5">
 
-        <!-- Profile pic. -->
-        <img class="profile-pic mb-5" src="img/profile_pic.jpg" alt="Profile Picture of David Read">
+        <!-- Greeting. -->
+        <h3 class="mb-4 text-center">Wanna talk about something cool? Hit me up!</h3>
 
-        <!-- Introduction text. -->
-        <h1>Hello, there! My name is David.</h1>
-        <p class="m-0">I'm an aspiring frontend software developer.</p>
+        <!-- Contact form. -->
+        <form class="row g-4">
+
+            <!-- Name field. -->
+            <div>
+                <label class="form-label" for="nameInput">Your Name</label>
+                <input class="form-control" type="text" id="nameInput" placeholder="Yuji Itadori" required>
+            </div>
+
+            <!-- Email field. -->
+            <div>
+                <label class="form-label" for="emailInput">Your email address</label>
+                <input class="form-control" type="email" id="emailInput" placeholder="itadori2003@example.com" required>
+            </div>
+
+            <!-- Message field. -->
+            <div>
+                <label class="form-label" for="messageInput">Your message</label>
+                <textarea class="form-control" id="messageInput" rows="5" required></textarea>
+            </div>
+
+            <!-- Submit button. -->
+            <div class="text-end">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+
+        </form>
 
     </main>
 
