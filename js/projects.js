@@ -3,7 +3,7 @@ window.onload = function() {
     // Array of project data.
     var projects = [{
             "name": "Developer Portfolio Website",
-            "technologies": "HTML · CSS · Bootstrap",
+            "technologies": "HTML · CSS · Bootstrap · JavaScript",
             "date": "Oct 2021 – current",
             "description": "A website created to serve as a developer portfolio. It lists professional information about me, a list of my notable projects, my resume, and my contact information. It utilizes Bootstrap CSS classes to enhance the user interface of the website.",
             "imagePath": "img/project_developer_portfolio_website.jpg",
@@ -80,7 +80,7 @@ window.onload = function() {
             "description": "A command line Java program created for an artificial intelligence course. It applies Adversarial Search Problem to a game of Tic-Tac-Toe. The program has a user playing a simulated opponent. The user uses the command line to select their moves. The opponent uses the Minimax algorithm to select the best move to counter the user's moves. This results in all games ending in either a draw or a defeat for the user.",
             "imagePath": "img/project_tic_tac_toe_program.jpg",
             "codeUrl": "https://github.com/david-read-iii/Tic-Tac-Toe",
-            "projectUrl": ""
+            "projectUrl": "https://github.com/david-read-iii/Tic-Tac-Toe/raw/master/out/artifacts/TicTacToe_jar/TicTacToe.jar"
         },
         {
             "name": "Shortest Path Problem Program",
@@ -89,7 +89,7 @@ window.onload = function() {
             "description": "A command line Java program developed for an artificial intelligence college course. It applies the Shortest Path Problem to a graph of fictitious cities. It uses either Best First Search or Uniform Cost Search to provide the shortest path from one city in the graph to another.",
             "imagePath": "img/project_shortest_path_problem_program.jpg",
             "codeUrl": "https://github.com/david-read-iii/Shortest-Path-Problem",
-            "projectUrl": ""
+            "projectUrl": "https://github.com/david-read-iii/Shortest-Path-Problem/raw/master/classes/artifacts/SearchMethods_jar/SearchMethods.jar"
         },
         {
             "name": "Course Registration System Program",
@@ -102,38 +102,35 @@ window.onload = function() {
         }
     ];
 
-    // Construct inner HTML string for the projects card container.
-    var projectsCardContainerInnerHTML = "";
+    // Construct inner HTML string for the card container.
+    var cardContainerInnerHTML = "";
     for (var i = 0; i < projects.length; i++) {
-        projectsCardContainerInnerHTML += "<div class=\"col-auto\">";
-        projectsCardContainerInnerHTML += "<div class=\"card h-100\">";
-        projectsCardContainerInnerHTML += "<a href=\"" + projects[i].imagePath + "\" target=\"_blank\" rel=\"noreferrer noopener\">";
-        projectsCardContainerInnerHTML += "<img class=\"card-img-top\" src=\"" + projects[i].imagePath + "\" alt=\"\">";
-        projectsCardContainerInnerHTML += "</a>";
-        projectsCardContainerInnerHTML += "<div class=\"card-body\">";
-        projectsCardContainerInnerHTML += "<h5 class=\"card-title mb-3\">" + projects[i].name + "</h5>";
-        projectsCardContainerInnerHTML += "<h6 class=\"card-subtitle mb-2 text-muted\">" + projects[i].technologies + "</h6>";
-        projectsCardContainerInnerHTML += "<h6 class=\"card-subtitle mb-3 text-muted\">" + projects[i].date + "</h6>";
-        projectsCardContainerInnerHTML += "<p class=\"mb-3\">" + projects[i].description + "</p>";
-        projectsCardContainerInnerHTML += "</div>";
-        projectsCardContainerInnerHTML += "<div class=\"card-footer\">";
-        projectsCardContainerInnerHTML += "<div class=\"float-end\">";
-
+        cardContainerInnerHTML += "<div class=\"col\">";
+        cardContainerInnerHTML += "<div class=\"card h-100\">";
+        cardContainerInnerHTML += "<a href=\"" + projects[i].imagePath + "\" target=\"_blank\" rel=\"noreferrer noopener\">";
+        cardContainerInnerHTML += "<img class=\"card-img-top\" src=\"" + projects[i].imagePath + "\">";
+        cardContainerInnerHTML += "</a>";
+        cardContainerInnerHTML += "<div class=\"card-body p-3\">";
+        cardContainerInnerHTML += "<h5 class=\"card-title mb-3\">" + projects[i].name + "</h5>";
+        cardContainerInnerHTML += "<h6 class=\"card-subtitle mb-2 text-muted\">" + projects[i].technologies + "</h6>";
+        cardContainerInnerHTML += "<h6 class=\"card-subtitle mb-3 text-muted\">" + projects[i].date + "</h6>";
+        cardContainerInnerHTML += "<p class=\"mb-0\">" + projects[i].description + "</p>";
+        cardContainerInnerHTML += "</div>";
+        cardContainerInnerHTML += "<div class=\"card-footer p-3\">";
+        cardContainerInnerHTML += "<div class=\"float-end\">";
         if (projects[i].codeUrl != "") {
-            projectsCardContainerInnerHTML += "<a class=\"btn btn-primary mb-2\" type=\"button\" href=\"" + projects[i].codeUrl + "\" target=\"_blank\" rel=\"noreferrer noopener\"> See Code</a>";
+            cardContainerInnerHTML += "<a class=\"btn btn-primary\" type=\"button\" href=\"" + projects[i].codeUrl + "\" target=\"_blank\" rel=\"noreferrer noopener\">See Code</a>";
         }
-
         if (projects[i].projectUrl != "") {
-            projectsCardContainerInnerHTML += "<a class=\"btn btn-primary ms-2 mb-2\" type=\"button\" href=\"" + projects[i].projectUrl + "\" target=\"_blank\" rel=\"noreferrer noopener\">See Project</a>";
+            cardContainerInnerHTML += "<a class=\"btn btn-primary ms-3\" type=\"button\" href=\"" + projects[i].projectUrl + "\" target=\"_blank\" rel=\"noreferrer noopener\">See Project</a>";
         }
-
-        projectsCardContainerInnerHTML += "</div>";
-        projectsCardContainerInnerHTML += "</div>";
-        projectsCardContainerInnerHTML += "</div>";
-        projectsCardContainerInnerHTML += "</div>";
+        cardContainerInnerHTML += "</div>";
+        cardContainerInnerHTML += "</div>";
+        cardContainerInnerHTML += "</div>";
+        cardContainerInnerHTML += "</div>";
     }
 
-    // Set inner HTML for projects card container.
-    var projectsCardContainer = document.getElementById("projects-card-container");
-    projectsCardContainer.innerHTML = projectsCardContainerInnerHTML;
+    // Set inner HTML for the card container.
+    var cardContainer = document.getElementById("card-container");
+    cardContainer.innerHTML = cardContainerInnerHTML;
 }

@@ -1,7 +1,7 @@
 .card {
     background-color: #22272E;
     border-color: #444C56;
-    width: 24rem;
+    border-width: 0.1rem;
 }
 
 .card-footer {
