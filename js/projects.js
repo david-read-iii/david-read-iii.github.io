@@ -4,7 +4,7 @@ window.onload = function() {
     var projects = [{
             "name": "Developer Portfolio Website",
             "technologies": "HTML · CSS · Bootstrap · JavaScript",
-            "date": "Oct 2021 – current",
+            "date": "Oct 2021",
             "description": "A website created to serve as a developer portfolio. It lists professional information about me, a list of my notable projects, my resume, and my contact information. It utilizes Bootstrap CSS classes to enhance the user interface of the website.",
             "imagePath": "img/project_developer_portfolio_website.jpg",
             "codeUrl": "https://github.com/david-read-iii/david-read-iii.github.io",
@@ -78,7 +78,7 @@ window.onload = function() {
             "technologies": "Java",
             "date": "Mar 2020",
             "description": "A command line Java program created for an artificial intelligence course. It applies Adversarial Search Problem to a game of Tic-Tac-Toe. The program has a user playing a simulated opponent. The user uses the command line to select their moves. The opponent uses the Minimax algorithm to select the best move to counter the user's moves. This results in all games ending in either a draw or a defeat for the user.",
-            "imagePath": "img/project_tic_tac_toe_program.jpg",
+            "imagePath": "img/project_tic_tac_toe_game.jpg",
             "codeUrl": "https://github.com/david-read-iii/Tic-Tac-Toe",
             "projectUrl": "https://github.com/david-read-iii/Tic-Tac-Toe/raw/master/out/artifacts/TicTacToe_jar/TicTacToe.jar"
         },
