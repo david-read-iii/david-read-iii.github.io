@@ -17,7 +17,7 @@ window.onload = function() {
             "description": "An Android app developed for a Udacity course. The app lists places of interest around my local city. The ListView, ArrayAdapter, and ArrayList objects are used to display a list of places of interest to the user. The TabLayout, ViewPager, FragmentPagerAdapter objects are used to separate the places of interest by category.",
             "imagePath": "img/project_washington_tour_guide_app.png",
             "codeUrl": "https://github.com/david-read-iii/Washington-Tour-Guide",
-            "projectUrl": ""
+            "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.washingtontourguide1"
         },
         {
             "name": "Who Wants to Be a Millionaire Game",
@@ -26,7 +26,7 @@ window.onload = function() {
             "description": "An Android app created for a mobile computing college course. The app allows the user to play the famous game, Who Wants to Be a Millionaire. It presents multiple choice questions to the user until the user answers one incorrectly or the user becomes a millionaire.",
             "imagePath": "img/project_who_wants_to_be_a_millionaire_game.png",
             "codeUrl": "https://github.com/david-read-iii/Who-Wants-to-Be-a-Millionaire",
-            "projectUrl": ""
+            "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.gameshow"
         },
         {
             "name": "Course Registration Waiting List App",
@@ -35,7 +35,7 @@ window.onload = function() {
             "description": "An Android app created for a mobile computing college course. The app allows the user to manage a course registration waiting list. Entries are stored on-device in an SQLite database. The app allows the user to perform the typical CRUD operations on the database. Entries are displayed using a RecyclerView object. Entries are created and updated using AlertDialog objects. A FloatingActionButton object allows the user to summon the create entry AlertDialog object.",
             "imagePath": "img/project_course_registration_waiting_list_app.png",
             "codeUrl": "https://github.com/david-read-iii/Course-Registration-Waiting-List",
-            "projectUrl": ""
+            "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.courseregistrationwaitinglist"
         },
         {
             "name": "Quiz Game",
@@ -53,7 +53,7 @@ window.onload = function() {
             "description": "An Android app created to present at an MSU Computer Club workshop. It is a simple notes app. Each note has a title and description. The app allows the user to create a note, read notes, update a note, and delete a note. Notes are stored on the user's device using the SharedPreferences object.",
             "imagePath": "img/project_notes_app.png",
             "codeUrl": "https://github.com/david-read-iii/Notes",
-            "projectUrl": ""
+            "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.notes"
         },
         {
             "name": "Stopwatch App",
@@ -62,7 +62,7 @@ window.onload = function() {
             "description": "An Android app developed to present at an MSU Computer Club workshop. The app is a simple stopwatch with controls to start, stop, and reset the time. It also has some basic styles applied to make the user interface look more appealing. Some source code is adapted from Code in Flow’s stopwatch tutorial, which can be found at https://codinginflow.com/tutorials/android/chronometer.",
             "imagePath": "img/project_stopwatch_app.png",
             "codeUrl": "https://github.com/david-read-iii/Stopwatch",
-            "projectUrl": ""
+            "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.stopwatch"
         },
         {
             "name": "Restaurant Automation System App",
@@ -122,7 +122,7 @@ window.onload = function() {
             cardContainerInnerHTML += "<a class=\"btn btn-primary\" type=\"button\" href=\"" + projects[i].codeUrl + "\" target=\"_blank\" rel=\"noreferrer noopener\">See Code</a>";
         }
         if (projects[i].projectUrl != "") {
-            cardContainerInnerHTML += "<a class=\"btn btn-primary ms-3\" type=\"button\" href=\"" + projects[i].projectUrl + "\" target=\"_blank\" rel=\"noreferrer noopener\">See Project</a>";
+            cardContainerInnerHTML += "<a class=\"btn btn-primary ms-3\" type=\"button\" href=\"" + projects[i].projectUrl + "\" target=\"_blank\" rel=\"noreferrer noopener\">Try It</a>";
         }
         cardContainerInnerHTML += "</div>";
         cardContainerInnerHTML += "</div>";
