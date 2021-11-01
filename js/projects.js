@@ -2,6 +2,15 @@ window.onload = function() {
 
     // Array of project data.
     var projects = [{
+            "name": "Book Listings App",
+            "technologies": "Android · XML · Java · REST API",
+            "date": "Oct 2021 - current",
+            "description": "A project completed for a Udacity course. It is an Android app that uses the Google Books API to display book listings. The user may use a search box to query books by title. Submitting a search fetches the appropriate listings via a network connection. Search results are displayed in a list, where each listing shows the book's title and author. Clicking on a result directs the user to the browser to view that book's detail view.",
+            "imagePath": "img/project_book_listings_app.png",
+            "codeUrl": "https://github.com/david-read-iii/Book-Listings",
+            "projectUrl": ""
+        },
+        {
             "name": "Developer Portfolio Website",
             "technologies": "HTML · CSS · Bootstrap · JavaScript",
             "date": "Oct 2021",
@@ -44,7 +53,7 @@ window.onload = function() {
             "description": "An Android app developed for a mobile computing college course. The app allows the user to log into the app and play a quiz game. The app allows top-level navigation using a NavigationDrawer object. The RulesFragment specifies the rules of the game, the QuizFragment presents multiple choice and multiple answer questions, the ResultsFragment maintains a list of past quiz attempts, and the ManageUserFragment allows the user to delete past quiz attempts or the user itself.",
             "imagePath": "img/project_quiz_game.png",
             "codeUrl": "https://github.com/david-read-iii/Quiz-Game",
-            "projectUrl": ""
+            "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.quizgame"
         },
         {
             "name": "Notes App",
@@ -71,7 +80,7 @@ window.onload = function() {
             "description": "An Android app developed for a software engineering college course. The goal of this project was to build a full-stack system that automates the functions of a restaurant. The app allows employees to log into the system and manage the attributes of the restaurant. These attributes are stored in a Firebase database. The database models several aspects of the restaurant, such as the state of the employees, tables, orders, menu, and inventory. Further, the app records all actions an employee takes and saves them in a global log, visible to any user of the app.",
             "imagePath": "img/project_restaurant_automation_system_app.png",
             "codeUrl": "https://github.com/david-read-iii/Restaurant-Automation-System",
-            "projectUrl": ""
+            "projectUrl": "https://play.google.com/store/apps/details?id=com.read.restaurantautomationsystem"
         },
         {
             "name": "Tic-Tac-Toe Game",
