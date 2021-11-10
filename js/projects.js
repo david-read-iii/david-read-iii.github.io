@@ -2,24 +2,27 @@ window.onload = function() {
 
     // Array of project data.
     var projects = [{
+            "id": "book-listings-app",
             "name": "Book Listings App",
             "technologies": "Android · XML · Java · REST API",
             "date": "Oct 2021 - current",
-            "description": "A project completed for a Udacity course. It is an Android app that uses the Google Books API to display book listings. The user may use a search box to query books by title. Submitting a search fetches the appropriate listings via a network connection. Search results are displayed in a list, where each listing shows the book's title and author. Clicking on a result directs the user to the browser to view that book's detail view.",
+            "description": "A project completed for a Udacity course. It is an Android app that uses the Google Books API to display listings for volumes search queries. The user may use a search box to query for book listings. Submitting a search fetches the appropriate listings via a network connection. Search results are displayed in a list, where each listing shows the book's title and author. Clicking on a result directs the user to the browser to view that book's detail view.",
             "imagePath": "img/project_book_listings_app.png",
             "codeUrl": "https://github.com/david-read-iii/Book-Listings",
             "projectUrl": ""
         },
         {
+            "id": "developer-portfolio-website",
             "name": "Developer Portfolio Website",
-            "technologies": "HTML · CSS · Bootstrap · JavaScript",
-            "date": "Oct 2021",
-            "description": "A website created to serve as a developer portfolio. It lists professional information about me, a list of my notable projects, my resume, and my contact information. It utilizes Bootstrap CSS classes to enhance the user interface of the website.",
+            "technologies": "HTML · CSS · Bootstrap · JavaScript · jQuery",
+            "date": "Oct 2021 - Nov 2021",
+            "description": "A website created to serve as a developer portfolio. It lists professional information about me, a list of my notable projects, my resume, and my contact information. It utilizes Bootstrap CSS classes to enhance the user interface of the website. It also utilizes jQuery JS to simplify JavaScript code.",
             "imagePath": "img/project_developer_portfolio_website.jpg",
             "codeUrl": "https://github.com/david-read-iii/david-read-iii.github.io",
             "projectUrl": ""
         },
         {
+            "id": "washington-tour-guide-app",
             "name": "Washington Tour Guide App",
             "technologies": "Android · XML · Java",
             "date": "Oct 2021",
@@ -29,6 +32,7 @@ window.onload = function() {
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.washingtontourguide1"
         },
         {
+            "id": "who-wants-to-be-a-millionaire-game",
             "name": "Who Wants to Be a Millionaire Game",
             "technologies": "Android · XML · Java",
             "date": "May 2021",
@@ -38,6 +42,7 @@ window.onload = function() {
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.gameshow"
         },
         {
+            "id": "course-registration-waiting-list-app",
             "name": "Course Registration Waiting List App",
             "technologies": "Android · XML · Java · SQLite",
             "date": "Apr 2021",
@@ -47,6 +52,7 @@ window.onload = function() {
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.courseregistrationwaitinglist"
         },
         {
+            "id": "quiz-game",
             "name": "Quiz Game",
             "technologies": "Android · XML · Java · SQLite",
             "date": "Apr 2021",
@@ -56,6 +62,7 @@ window.onload = function() {
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.quizgame"
         },
         {
+            "id": "notes-app",
             "name": "Notes App",
             "technologies": "Android · XML · Java",
             "date": "Nov 2020",
@@ -65,6 +72,7 @@ window.onload = function() {
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.notes"
         },
         {
+            "id": "stopwatch-app",
             "name": "Stopwatch App",
             "technologies": "Android · XML · Java",
             "date": "Oct 2020",
@@ -74,6 +82,7 @@ window.onload = function() {
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.stopwatch"
         },
         {
+            "id": "restaurant-automation-system-app",
             "name": "Restaurant Automation System App",
             "technologies": "Android · XML · Java · Firebase",
             "date": "Jan 2020 – May 2020",
@@ -83,6 +92,7 @@ window.onload = function() {
             "projectUrl": "https://play.google.com/store/apps/details?id=com.read.restaurantautomationsystem"
         },
         {
+            "id": "tic-tac-toe-game",
             "name": "Tic-Tac-Toe Game",
             "technologies": "Java",
             "date": "Mar 2020",
@@ -92,6 +102,7 @@ window.onload = function() {
             "projectUrl": "https://github.com/david-read-iii/Tic-Tac-Toe/raw/master/out/artifacts/TicTacToe_jar/TicTacToe.jar"
         },
         {
+            "id": "shortest-path-problem-program",
             "name": "Shortest Path Problem Program",
             "technologies": "Java",
             "date": "Feb 2020",
@@ -101,6 +112,7 @@ window.onload = function() {
             "projectUrl": "https://github.com/david-read-iii/Shortest-Path-Problem/raw/master/classes/artifacts/SearchMethods_jar/SearchMethods.jar"
         },
         {
+            "id": "course-registration-system-program",
             "name": "Course Registration System Program",
             "technologies": "Python · SQLite",
             "date": "Dec 2019",
@@ -114,7 +126,7 @@ window.onload = function() {
     // Construct inner HTML string for the card container.
     var cardContainerInnerHTML = "";
     for (var i = 0; i < projects.length; i++) {
-        cardContainerInnerHTML += "<div class=\"col\">";
+        cardContainerInnerHTML += "<div class=\"col\" id=\"" + projects[i].id + "\">";
         cardContainerInnerHTML += "<div class=\"card h-100\">";
         cardContainerInnerHTML += "<a href=\"" + projects[i].imagePath + "\" target=\"_blank\" rel=\"noreferrer noopener\">";
         cardContainerInnerHTML += "<img class=\"card-img-top\" src=\"" + projects[i].imagePath + "\">";
@@ -142,4 +154,27 @@ window.onload = function() {
     // Set inner HTML for the card container.
     var cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML = cardContainerInnerHTML;
+
+    // If the URL points to a particular project in the card container, scroll to that project after all images are loaded.
+    if (document.location.hash) {
+        var imagesLoaded = 0;
+        var totalImages = projects.length;
+
+        $("img").each(function(idx, img) {
+            $("<img>").on("load", imageLoaded).attr("src", $(img).attr("src"))
+        })
+
+        function imageLoaded() {
+            imagesLoaded++;
+            if (imagesLoaded == totalImages) {
+                allImagesLoaded();
+            }
+        }
+
+        function allImagesLoaded() {
+            if (document.location.hash) {
+                document.getElementById(document.location.hash.substring(1)).scrollIntoView();
+            }
+        }
+    }
 }
