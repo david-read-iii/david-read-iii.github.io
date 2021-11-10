@@ -5,11 +5,11 @@ window.onload = function() {
             "id": "book-listings-app",
             "name": "Book Listings App",
             "technologies": "Android · XML · Java · REST API",
-            "date": "Oct 2021 - current",
+            "date": "Oct 2021 - Nov 2021",
             "description": "A project completed for a Udacity course. It is an Android app that uses the Google Books API to display listings for volumes search queries. The user may use a search box to query for book listings. Submitting a search fetches the appropriate listings via a network connection. Search results are displayed in a list, where each listing shows the book's title and author. Clicking on a result directs the user to the browser to view that book's detail view.",
             "imagePath": "img/project_book_listings_app.png",
             "codeUrl": "https://github.com/david-read-iii/Book-Listings",
-            "projectUrl": ""
+            "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.booklistings"
         },
         {
             "id": "developer-portfolio-website",
@@ -19,7 +19,7 @@ window.onload = function() {
             "description": "A website created to serve as a developer portfolio. It lists professional information about me, a list of my notable projects, my resume, and my contact information. It utilizes Bootstrap CSS classes to enhance the user interface of the website. It also utilizes jQuery JS to simplify JavaScript code.",
             "imagePath": "img/project_developer_portfolio_website.jpg",
             "codeUrl": "https://github.com/david-read-iii/david-read-iii.github.io",
-            "projectUrl": ""
+            "projectUrl": "https://david-read-iii.github.io/"
         },
         {
             "id": "washington-tour-guide-app",
