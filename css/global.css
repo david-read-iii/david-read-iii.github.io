@@ -9,3 +9,16 @@ header {
 footer {
     background-color: #2D333B;
 }
+
+.dropdown-menu {
+    background-color: #22272E;
+}
+
+.dropdown-item {
+    color: #A0A3A7;
+}
+
+.dropdown-item.active {
+    background-color: transparent;
+    color: #FFFFFF;
+}
