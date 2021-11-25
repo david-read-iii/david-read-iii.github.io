@@ -5,7 +5,7 @@ window.onload = function() {
             "id": "news-feed-app",
             "name": "News Feed App",
             "technologies": "Android · XML · Java · REST API",
-            "date": "Nov 2021",
+            "date": "Nov 2021 - current",
             "description": "A project completed for a Udacity course. It is an Android app that uses the Guardian API to display a news feed. Each feed item shows that article's title, section name, authors, and date published. Clicking on an item launches the device's browser to view the article. Attributes of the news feed may be tweaked, such as the order of the articles and an optional search query.",
             "imagePath": "img/project_news_feed_app.png",
             "codeUrl": "https://github.com/david-read-iii/News-Feed",
