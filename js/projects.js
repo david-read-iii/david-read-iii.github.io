@@ -2,6 +2,16 @@ window.onload = function() {
 
     // Array of project data.
     var projects = [{
+            "id": "news-feed-app",
+            "name": "News Feed App",
+            "technologies": "Android · XML · Java · REST API",
+            "date": "Nov 2021",
+            "description": "A project completed for a Udacity course. It is an Android app that uses the Guardian API to display a news feed. Each feed item shows that article's title, section name, authors, and date published. Clicking on an item launches the device's browser to view the article. Attributes of the news feed may be tweaked, such as the order of the articles and an optional search query.",
+            "imagePath": "img/project_news_feed_app.png",
+            "codeUrl": "https://github.com/david-read-iii/News-Feed",
+            "projectUrl": ""
+        },
+        {
             "id": "book-listings-app",
             "name": "Book Listings App",
             "technologies": "Android · XML · Java · REST API",
@@ -123,46 +133,102 @@ window.onload = function() {
         }
     ];
 
-    // Construct inner HTML string for the card container.
-    var cardContainerInnerHTML = "";
+    // Reference to the card container layout.
+    var cardContainerLayout = document.getElementById("card-container");
+
+    // Create a card for each project.
     for (var i = 0; i < projects.length; i++) {
-        cardContainerInnerHTML += "<div class=\"col\" id=\"" + projects[i].id + "\">";
-        cardContainerInnerHTML += "<div class=\"card h-100\">";
-        cardContainerInnerHTML += "<a href=\"" + projects[i].imagePath + "\" target=\"_blank\" rel=\"noreferrer noopener\">";
-        cardContainerInnerHTML += "<img class=\"card-img-top\" src=\"" + projects[i].imagePath + "\">";
-        cardContainerInnerHTML += "</a>";
-        cardContainerInnerHTML += "<div class=\"card-body p-3\">";
-        cardContainerInnerHTML += "<h5 class=\"card-title mb-3\">" + projects[i].name + "</h5>";
-        cardContainerInnerHTML += "<h6 class=\"card-subtitle mb-2 text-muted\">" + projects[i].technologies + "</h6>";
-        cardContainerInnerHTML += "<h6 class=\"card-subtitle mb-3 text-muted\">" + projects[i].date + "</h6>";
-        cardContainerInnerHTML += "<p class=\"mb-0\">" + projects[i].description + "</p>";
-        cardContainerInnerHTML += "</div>";
-        cardContainerInnerHTML += "<div class=\"card-footer p-3\">";
-        cardContainerInnerHTML += "<div class=\"float-end\">";
+
+        // Setup card layout.
+        var outerCardLayout = document.createElement("div");
+        outerCardLayout.setAttribute("class", "col");
+        outerCardLayout.setAttribute("id", projects[i].id);
+
+        var innerCardLayout = document.createElement("div");
+        innerCardLayout.setAttribute("class", "card h-100");
+
+        outerCardLayout.appendChild(innerCardLayout);
+
+        // Setup card image.
+        var imageLink = document.createElement("a");
+        imageLink.setAttribute("href", projects[i].imagePath);
+        imageLink.setAttribute("target", "_blank");
+        imageLink.setAttribute("rel", "noreferrer noopener");
+
+        var image = document.createElement("img");
+        image.setAttribute("class", "card-img-top");
+        image.setAttribute("src", projects[i].imagePath);
+
+        innerCardLayout.appendChild(imageLink);
+        imageLink.appendChild(image);
+
+        // Setup card body.
+        var cardBodyLayout = document.createElement("div");
+        cardBodyLayout.setAttribute("class", "card-body p-3");
+
+        var nameText = document.createElement("h5");
+        nameText.setAttribute("class", "card-title mb-3");
+        nameText.innerHTML = projects[i].name;
+
+        var technologiesText = document.createElement("h6");
+        technologiesText.setAttribute("class", "card-subtitle mb-2 text-muted");
+        technologiesText.innerHTML = projects[i].technologies;
+
+        var dateText = document.createElement("h6");
+        dateText.setAttribute("class", "card-subtitle mb-3 text-muted");
+        dateText.innerHTML = projects[i].date;
+
+        var descriptionText = document.createElement("p");
+        descriptionText.setAttribute("class", "mb-0");
+        descriptionText.innerHTML = projects[i].description;
+
+        innerCardLayout.appendChild(cardBodyLayout);
+        cardBodyLayout.appendChild(nameText);
+        cardBodyLayout.appendChild(technologiesText);
+        cardBodyLayout.appendChild(dateText);
+        cardBodyLayout.appendChild(descriptionText);
+
+        // Setup card footer layout.
+        var outerCardFooterLayout = document.createElement("div");
+        outerCardFooterLayout.setAttribute("class", "card-footer p-3");
+
+        var innerCardFooterLayout = document.createElement("div");
+        innerCardFooterLayout.setAttribute("class", "float-end");
+
+        innerCardLayout.appendChild(outerCardFooterLayout);
+        outerCardFooterLayout.appendChild(innerCardFooterLayout);
+
+        // Setup card footer buttons.
         if (projects[i].codeUrl != "") {
-            cardContainerInnerHTML += "<a class=\"btn btn-primary\" type=\"button\" href=\"" + projects[i].codeUrl + "\" target=\"_blank\" rel=\"noreferrer noopener\">See Code</a>";
+            var seeCodeButton = document.createElement("a");
+            seeCodeButton.setAttribute("class", "btn btn-primary");
+            seeCodeButton.setAttribute("type", "button");
+            seeCodeButton.setAttribute("href", projects[i].codeUrl);
+            seeCodeButton.setAttribute("target", "_blank");
+            seeCodeButton.setAttribute("rel", "noreferrer noopener");
+            seeCodeButton.innerHTML = "See Code";
+
+            innerCardFooterLayout.appendChild(seeCodeButton);
         }
+
         if (projects[i].projectUrl != "") {
-            cardContainerInnerHTML += "<a class=\"btn btn-primary ms-3\" type=\"button\" href=\"" + projects[i].projectUrl + "\" target=\"_blank\" rel=\"noreferrer noopener\">Try It</a>";
+            var tryItButton = document.createElement("a");
+            tryItButton.setAttribute("class", "btn btn-primary ms-3");
+            tryItButton.setAttribute("type", "button");
+            tryItButton.setAttribute("href", projects[i].projectUrl);
+            tryItButton.setAttribute("target", "_blank");
+            tryItButton.setAttribute("rel", "noreferrer noopener");
+            tryItButton.innerHTML = "Try It";
+
+            innerCardFooterLayout.appendChild(tryItButton);
         }
-        cardContainerInnerHTML += "</div>";
-        cardContainerInnerHTML += "</div>";
-        cardContainerInnerHTML += "</div>";
-        cardContainerInnerHTML += "</div>";
+
+        // Add card to the card container.
+        cardContainerLayout.appendChild(outerCardLayout);
     }
 
-    // Set inner HTML for the card container.
-    var cardContainer = document.getElementById("card-container");
-    cardContainer.innerHTML = cardContainerInnerHTML;
-
-    // If the URL points to a particular project in the card container, scroll to that project after all images are loaded.
+    // If the URL points to a particular card in the card container, wait for all images to load. Then, scroll to that card and highlight it.
     if (document.location.hash) {
-        var imagesLoaded = 0;
-        var totalImages = projects.length;
-
-        $("img").each(function(idx, img) {
-            $("<img>").on("load", imageLoaded).attr("src", $(img).attr("src"))
-        })
 
         function imageLoaded() {
             imagesLoaded++;
@@ -173,8 +239,22 @@ window.onload = function() {
 
         function allImagesLoaded() {
             if (document.location.hash) {
-                document.getElementById(document.location.hash.substring(1)).scrollIntoView();
+                var selectedOuterCardLayout = document.getElementById(document.location.hash.substring(1));
+                var selectedInnerCardLayout = selectedOuterCardLayout.getElementsByClassName("card")[0];
+                var selectedOuterCardFooterLayout = selectedOuterCardLayout.getElementsByClassName("card-footer")[0];
+
+                selectedOuterCardLayout.scrollIntoView();
+                selectedInnerCardLayout.classList.add("card-highlight");
+                selectedOuterCardFooterLayout.classList.add("card-footer-highlight");
             }
         }
+
+        var imagesLoaded = 0;
+        var totalImages = projects.length;
+
+        $("img").each(function(idx, img) {
+            $("<img>").on("load", imageLoaded).attr("src", $(img).attr("src"));
+        });
+
     }
 }
