@@ -16,7 +16,7 @@ window.onload = function() {
             "name": "Book Listings App",
             "technologies": "Android · XML · Java · REST API",
             "date": "Oct 2021 - Nov 2021",
-            "description": "A project completed for a Udacity course. It is an Android app that uses the Google Books API to display listings for volumes search queries. The user may use a search box to query for book listings. Submitting a search fetches the appropriate listings via a network connection. Search results are displayed in a list, where each listing shows the book's title and author. Clicking on a result directs the user to the browser to view that book's detail view.",
+            "description": "A project built for a Udacity course. It is an Android app that uses the Google Books API to display listings for volumes searches. The user may use a search box to specify a query term. Search results are displayed in a list, where each listing shows the book's title and author. Clicking on a result directs the user to the browser to view details about that book.",
             "imagePath": "img/project_book_listings_app.png",
             "codeUrl": "https://github.com/david-read-iii/Book-Listings",
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.booklistings"
@@ -24,9 +24,9 @@ window.onload = function() {
         {
             "id": "developer-portfolio-website",
             "name": "Developer Portfolio Website",
-            "technologies": "HTML · CSS · Bootstrap · JavaScript · jQuery",
+            "technologies": "Web · HTML · CSS · Bootstrap · JavaScript · jQuery",
             "date": "Oct 2021 - Nov 2021",
-            "description": "A website created to serve as a developer portfolio. It lists professional information about me, a list of my notable projects, my resume, and my contact information. It utilizes Bootstrap CSS classes to enhance the user interface of the website. It also utilizes jQuery JS to simplify JavaScript code.",
+            "description": "A website created to serve as a personal developer portfolio. It lists professional information about me, a list of my notable projects, my resume, and my contact information. It utilizes Bootstrap CSS classes to enhance the user interface of the website. It also utilizes jQuery JS to simplify JavaScript code.",
             "imagePath": "img/project_developer_portfolio_website.jpg",
             "codeUrl": "https://github.com/david-read-iii/david-read-iii.github.io",
             "projectUrl": "https://david-read-iii.github.io/"
@@ -36,7 +36,7 @@ window.onload = function() {
             "name": "Washington Tour Guide App",
             "technologies": "Android · XML · Java",
             "date": "Oct 2021",
-            "description": "An Android app developed for a Udacity course. The app lists places of interest around my local city. The ListView, ArrayAdapter, and ArrayList objects are used to display a list of places of interest to the user. The TabLayout, ViewPager, FragmentPagerAdapter objects are used to separate the places of interest by category.",
+            "description": "An Android app developed for a Udacity course. The app lists places of interest around my local city. Clicking on an item shows a dialog containing information about the place. A tabbed interface allows the user to switch between categories.",
             "imagePath": "img/project_washington_tour_guide_app.png",
             "codeUrl": "https://github.com/david-read-iii/Washington-Tour-Guide",
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.washingtontourguide1"
@@ -56,7 +56,7 @@ window.onload = function() {
             "name": "Course Registration Waiting List App",
             "technologies": "Android · XML · Java · SQLite",
             "date": "Apr 2021",
-            "description": "An Android app created for a mobile computing college course. The app allows the user to manage a course registration waiting list. Entries are stored on-device in an SQLite database. The app allows the user to perform the typical CRUD operations on the database. Entries are displayed using a RecyclerView object. Entries are created and updated using AlertDialog objects. A FloatingActionButton object allows the user to summon the create entry AlertDialog object.",
+            "description": "An Android app created for a mobile computing college course. The app allows the user to manage a course registration waiting list. Each listing shows the entry's student name, course, and priority. Clicking on a listing pops a dialog showing modification options for the entry. Clicking the floating action button in the bottom right corner pops a dialog for adding a new entry. The entries are stored on-device in an SQLite database.",
             "imagePath": "img/project_course_registration_waiting_list_app.png",
             "codeUrl": "https://github.com/david-read-iii/Course-Registration-Waiting-List",
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.courseregistrationwaitinglist"
@@ -66,7 +66,7 @@ window.onload = function() {
             "name": "Quiz Game",
             "technologies": "Android · XML · Java · SQLite",
             "date": "Apr 2021",
-            "description": "An Android app developed for a mobile computing college course. The app allows the user to log into the app and play a quiz game. The app allows top-level navigation using a NavigationDrawer object. The RulesFragment specifies the rules of the game, the QuizFragment presents multiple choice and multiple answer questions, the ResultsFragment maintains a list of past quiz attempts, and the ManageUserFragment allows the user to delete past quiz attempts or the user itself.",
+            "description": "An Android app developed for a mobile computing college course. The app allows the user to log into the app and play a quiz game. Top-level navigation is handled via a navigation drawer. A login screen allows the user to log into the app, a register screen allows the user to register for an account, a rules screen specifies the rules of the game, a quiz screen presents questions, a results screen shows a list of past quiz attempts, and a manage user screen has options for the user's account. Properties of the user's account are stored on-device in an SQLite database.",
             "imagePath": "img/project_quiz_game.png",
             "codeUrl": "https://github.com/david-read-iii/Quiz-Game",
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.quizgame"
@@ -76,7 +76,7 @@ window.onload = function() {
             "name": "Notes App",
             "technologies": "Android · XML · Java",
             "date": "Nov 2020",
-            "description": "An Android app created to present at an MSU Computer Club workshop. It is a simple notes app. Each note has a title and description. The app allows the user to create a note, read notes, update a note, and delete a note. Notes are stored on the user's device using the SharedPreferences object.",
+            "description": "An Android app created to present at an MSU Computer Club workshop. It is a simple notes app. Each note has a title and description. Clicking a note shows a screen with modification options for the note. Clicking the add button in the action bar shows a screen for adding a new note. Notes are stored on-device in shared preferences.",
             "imagePath": "img/project_notes_app.png",
             "codeUrl": "https://github.com/david-read-iii/Notes",
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.notes"
@@ -86,7 +86,7 @@ window.onload = function() {
             "name": "Stopwatch App",
             "technologies": "Android · XML · Java",
             "date": "Oct 2020",
-            "description": "An Android app developed to present at an MSU Computer Club workshop. The app is a simple stopwatch with controls to start, stop, and reset the time. It also has some basic styles applied to make the user interface look more appealing. Some source code is adapted from Code in Flow’s stopwatch tutorial, which can be found at https://codinginflow.com/tutorials/android/chronometer.",
+            "description": "An Android app developed to present at an MSU Computer Club workshop. The app is a simple stopwatch with controls to start, stop, and reset the time. Some source code is adapted from Code in Flow’s stopwatch tutorial, which can be found at https://codinginflow.com/tutorials/android/chronometer.",
             "imagePath": "img/project_stopwatch_app.png",
             "codeUrl": "https://github.com/david-read-iii/Stopwatch",
             "projectUrl": "https://play.google.com/store/apps/details?id=com.davidread.stopwatch"
@@ -96,7 +96,7 @@ window.onload = function() {
             "name": "Restaurant Automation System App",
             "technologies": "Android · XML · Java · Firebase",
             "date": "Jan 2020 – May 2020",
-            "description": "An Android app developed for a software engineering college course. The goal of this project was to build a full-stack system that automates the functions of a restaurant. The app allows employees to log into the system and manage the attributes of the restaurant. These attributes are stored in a Firebase database. The database models several aspects of the restaurant, such as the state of the employees, tables, orders, menu, and inventory. Further, the app records all actions an employee takes and saves them in a global log, visible to any user of the app.",
+            "description": "An Android app developed for a software engineering college course. The goal of this project was to build a full-stack system that automates the functions of a restaurant. The app allows employees to log into the system and manage the attributes of the restaurant. Employee permissions dictate what attributes they have access to. All attributes of the restaurant are stored in a Firebase database. The database models several aspects of the restaurant, including the state of the employees, tables, orders, menu, and inventory. Further, the app records all actions an employee takes and saves them in a log visible to any user of the system.",
             "imagePath": "img/project_restaurant_automation_system_app.png",
             "codeUrl": "https://github.com/david-read-iii/Restaurant-Automation-System",
             "projectUrl": "https://play.google.com/store/apps/details?id=com.read.restaurantautomationsystem"
@@ -104,7 +104,7 @@ window.onload = function() {
         {
             "id": "tic-tac-toe-game",
             "name": "Tic-Tac-Toe Game",
-            "technologies": "Java",
+            "technologies": "Command Line · Java",
             "date": "Mar 2020",
             "description": "A command line Java program created for an artificial intelligence course. It applies Adversarial Search Problem to a game of Tic-Tac-Toe. The program has a user playing a simulated opponent. The user uses the command line to select their moves. The opponent uses the Minimax algorithm to select the best move to counter the user's moves. This results in all games ending in either a draw or a defeat for the user.",
             "imagePath": "img/project_tic_tac_toe_game.jpg",
@@ -114,7 +114,7 @@ window.onload = function() {
         {
             "id": "shortest-path-problem-program",
             "name": "Shortest Path Problem Program",
-            "technologies": "Java",
+            "technologies": "Command Line · Java",
             "date": "Feb 2020",
             "description": "A command line Java program developed for an artificial intelligence college course. It applies the Shortest Path Problem to a graph of fictitious cities. It uses either Best First Search or Uniform Cost Search to provide the shortest path from one city in the graph to another.",
             "imagePath": "img/project_shortest_path_problem_program.jpg",
@@ -124,9 +124,9 @@ window.onload = function() {
         {
             "id": "course-registration-system-program",
             "name": "Course Registration System Program",
-            "technologies": "Python · SQLite",
+            "technologies": "Command Line · Jupyter Notebook · Python · SQLite",
             "date": "Dec 2019",
-            "description": "A command line Jupyter Notebook program created for a database systems college course. The program utilizes an SQLite database to represent a course registration system for students of some university. There are three main components of this program. Firstly, there is the database itself. It consists of a courses, an enrolled, and a students table. All tables appropriately use key constraints. For example, the courses and students table use primary keys to uniquely identify their entries. Also, the enrolled table uses foreign keys to associate each of their entries with exactly one course entry and exactly one student entry. Secondly, there are the typical CRUD functions found in every database manipulating program. Since this program is created with only the student role in mind, some of these functions are excluded. Thirdly, there are the functions that control the command line interface. Such functions allow the user to view their enrollments, view a list of courses, and enroll or withdraw themselves from a course.",
+            "description": "A command line Jupyter Notebook program created for a database systems college course. The program allows the user to access a course registration system from the role of a student. The user may view available courses, enroll themselves in a course, withdraw themselves from a course, search for a course, and view their current enrollments. Information about students, enrollments, and courses are stored on-device in an SQLite database.",
             "imagePath": "img/project_course_registration_system_program.jpg",
             "codeUrl": "https://github.com/david-read-iii/Course-Registration-System",
             "projectUrl": ""
