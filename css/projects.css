@@ -1,6 +1,6 @@
 .card {
     background-color: #22272E;
-    border-color: #444C56;
+    border-color: #3C4148;
     border-width: 0.1rem;
 }
 
@@ -10,9 +10,10 @@
 }
 
 .card-highlight {
-    background-color: #2D333B;
+    background-color: #3C4148;
+    border-color: #555A61;
 }
 
 .card-footer-highlight {
-    background-color: #2D333B;
+    background-color: #3C4148;
 }
