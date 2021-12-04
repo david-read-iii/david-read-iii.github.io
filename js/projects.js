@@ -18,13 +18,13 @@ function addProjectToCardContainer(cardContainer, project) {
 
     // Setup card image.
     var imageLink = document.createElement("a");
-    imageLink.setAttribute("href", project.imagePath);
+    imageLink.setAttribute("href", project.thumbnailUrl);
     imageLink.setAttribute("target", "_blank");
     imageLink.setAttribute("rel", "noreferrer noopener");
 
     var image = document.createElement("img");
     image.setAttribute("class", "card-img-top");
-    image.setAttribute("src", project.imagePath);
+    image.setAttribute("src", project.thumbnailUrl);
 
     innerCardLayout.appendChild(imageLink);
     imageLink.appendChild(image);
