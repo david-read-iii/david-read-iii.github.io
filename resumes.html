@@ -12,7 +12,7 @@
 
     <!-- Import developer CSS. -->
     <link href="css/global.css" rel="stylesheet">
-    <link href="css/contact.css" rel="stylesheet">
+    <link href="css/resumes.css" rel="stylesheet">
 
     <!-- Import jQuery JS.-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -20,17 +20,18 @@
     <!-- Import core Bootstrap JS. -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <!-- Import jQuery JS. -->
-    <script src="js/jquery.js"></script>
-
     <!-- Import developer JS. -->
     <script src="js/navbar.js"></script>
+    <script src="js/resumes.js"></script>
+
+    <!-- Import jQuery JS. -->
+    <script src="js/jquery.js"></script>
 
     <!-- Import Font Awesome kit. -->
     <script src="https://kit.fontawesome.com/b06b68bfd6.js" crossorigin="anonymous"></script>
 
     <!-- Document title. -->
-    <title>Contact | David Read's Portfolio</title>
+    <title>Resumes | David Read's Portfolio</title>
 
 </head>
 
@@ -51,12 +52,12 @@
                 <a class="nav-item nav-link" href="about.html">About</a>
                 <a class="nav-item nav-link" href="projects.html">Projects</a>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="resume-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle active" href="#" id="resume-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Resumes
                     </a>
                     <ul class="dropdown-menu" id="resume-dropdown-menu" aria-labelledby="resume-dropdown"></ul>
                 </li>
-                <a class="nav-item nav-link active" href="contact.html">Contact</a>
+                <a class="nav-item nav-link" href="contact.html">Contact</a>
             </div>
 
         </nav>
@@ -64,13 +65,10 @@
     </header>
 
     <!-- Main content. -->
-    <main class="p-5 text-center">
+    <main class="h-100">
 
-        <!-- Greeting. -->
-        <h3 class="mb-3">Wanna talk about something cool? Hit me up!</h3>
-
-        <!-- Email me button. -->
-        <a class="btn btn-primary" href="mailto:davidread1998@gmail.com" role="button" target="_blank" rel="noreferrer noopener">Email me</a>
+        <!-- Resume embed. -->
+        <embed class="h-100 w-100" id="resume-embed" src="pdf/Resume (Frontend Development - No Phone Number).pdf" />
 
     </main>
 

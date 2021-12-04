@@ -113,7 +113,7 @@ function highlightAndScrollIntoCard(id) {
     outerCardLayout.scrollIntoView();
 }
 
-window.onload = function() {
+$(document).ready(function() {
 
     // Get projects array using a GET HTTP request.
     $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/projects.json", function(projects) {
@@ -143,4 +143,4 @@ window.onload = function() {
             });
         }
     });
-}
+});
