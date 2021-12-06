@@ -9,8 +9,9 @@ function addItemToResumeDropdownMenu(dropdownMenu, resume) {
 
     var htmlAElement = document.createElement("a");
     htmlAElement.setAttribute("class", "dropdown-item");
-    htmlAElement.setAttribute("href", "resumes.html?resume=" + resume.id);
-    htmlAElement.setAttribute("id", resume.id);
+    htmlAElement.setAttribute("href", resume.url);
+    htmlAElement.setAttribute("target", "_blank");
+    htmlAElement.setAttribute("rel", "noreferrer noopener");
     htmlAElement.innerHTML = resume.name;
 
     htmlLiElement.appendChild(htmlAElement);
