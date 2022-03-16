@@ -113,10 +113,10 @@ function highlightAndScrollIntoCard(id) {
     outerCardLayout.scrollIntoView();
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     // Get projects array using a GET HTTP request.
-    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/projects.json", function(projects) {
+    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/projects.json", function (projects) {
 
         // Add a card in the card container for each project in the projects array.
         var cardContainerLayout = document.getElementById("card-container");
@@ -138,7 +138,7 @@ $(document).ready(function() {
             var imagesLoaded = 0;
             var totalImages = projects.length;
 
-            $("img").each(function(idx, img) {
+            $("img").each(function (idx, img) {
                 $("<img>").on("load", imageLoaded).attr("src", $(img).attr("src"));
             });
         }

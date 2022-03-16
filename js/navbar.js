@@ -18,10 +18,10 @@ function addItemToResumeDropdownMenu(dropdownMenu, resume) {
     dropdownMenu.appendChild(htmlLiElement);
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     // Get resumes array using a GET HTTP request.
-    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/resumes.json", function(resumes) {
+    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/resumes.json", function (resumes) {
 
         // Add an item in the resume dropdown menu for each resume in the resumes array.
         var resumeDropdownMenu = document.getElementById("resume-dropdown-menu");
