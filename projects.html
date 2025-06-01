@@ -98,11 +98,60 @@
                 </div>
                 <div class="card-footer p-3">
                     <div class="float-end buttons">
-                        <a class="btn btn-primary" target="_blank" rel="noreferrer noopener">See More</a>
+                        <a class="btn btn-primary" id="seeMoreButton" target="_blank" rel="noreferrer noopener"
+                            data-bs-toggle="modal" data-bs-target="#seeMoreModal">See More</a>
                     </div>
                 </div>
             </div>
         </div>
+    </template>
+
+    <!-- See More modal. -->
+    <div class="modal fade" id="seeMoreModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal header. -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="nameLabel"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <!-- Modal body. -->
+                <div class="modal-body">
+
+                    <!-- Tags. -->
+                    <div class="row">
+                        <p class="col col-lg-2">Tags</p>
+                        <p class="col" id="tagsValue"></p>
+                    </div>
+
+                    <!-- Date. -->
+                    <div class="row">
+                        <p class="col col-lg-2">Date</p>
+                        <p class="col" id="dateValue"></p>
+                    </div>
+
+                    <!-- Description. -->
+                    <div class="row">
+                        <p class="col col-lg-2 mb-0">Description</p>
+                        <p class="col mb-0" id="descriptionValue"></p>
+                    </div>
+
+                </div>
+
+                <!-- Modal footer. -->
+                <div class="modal-footer" id="modalFooter">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <template id="modalButtonTemplate">
+        <a class="btn btn-primary" target="_blank" rel="noopener noreferrer"></a>
     </template>
 
 </body>

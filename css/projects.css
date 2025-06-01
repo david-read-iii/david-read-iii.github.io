@@ -17,3 +17,19 @@
 .card-footer-highlight {
     background-color: #3C4148;
 }
+
+.modal-content {
+    background-color: #22272E;
+    border-color: #555A61;
+    border-width: 0.1rem;
+}
+
+.modal-header {
+    border-color: #555A61;
+    border-width: 0.1rem;
+}
+
+.modal-footer {
+    border-color: #555A61;
+    border-width: 0.1rem;
+}

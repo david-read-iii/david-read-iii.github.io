@@ -25,7 +25,9 @@ function addProjectToCardContainer(cardContainer, project) {
     card.querySelector(".tags").textContent = project.tags;
     card.querySelector(".date").textContent = project.date;
 
-    // TODO: Add click listener for See Details button.
+    // Pass project JSON as a param when See More is clicked.
+    const seeMoreBtn = card.querySelector("#seeMoreButton");
+    seeMoreBtn.setAttribute("data-project", JSON.stringify(project));
 
     cardContainer.appendChild(card);
 }
@@ -49,6 +51,26 @@ function highlightAndScrollIntoCard(id) {
     outerCardLayout.scrollIntoView();
 }
 
+/**
+ * Creates a new button element from a template, sets its link and text, and appends it to the given footer element.
+ * 
+ * @param {HTMLElement} footer - The container element (e.g., a div) where the button will be appended.
+ * @param {string} href - The URL string to set as the button's link (assuming you want it to behave like a link).
+ * @param {string} textContent - The text to display inside the button.
+ */
+function addButtonToFooter(footer, href, textContent) {
+    // Get template button.
+    const template = document.getElementById("modalButtonTemplate");
+    const button = template.content.cloneNode(true).firstElementChild;
+
+    // Set data on button.
+    button.href = href
+    button.textContent = textContent
+
+    // Add button to footer.
+    footer.appendChild(button)
+}
+
 $(document).ready(function () {
 
     // Get projects array using a GET HTTP request.
@@ -58,7 +80,6 @@ $(document).ready(function () {
         // Add a card in the card container for each project in the projects array.
         var cardContainerLayout = document.getElementById("card-container");
         for (var i = 0; i < projects.length; i++) {
-            console.log
             addProjectToCardContainer(cardContainerLayout, projects[i]);
         }
 
@@ -79,6 +100,35 @@ $(document).ready(function () {
             $("img").each(function (idx, img) {
                 $("<img>").on("load", imageLoaded).attr("src", $(img).attr("src"));
             });
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const seeMoreModal = document.getElementById("seeMoreModal");
+
+    // See More Modal show modal event listener.
+    seeMoreModal.addEventListener("show.bs.modal", function (event) {
+        const button = event.relatedTarget;
+        const project = JSON.parse(button.getAttribute("data-project"));
+
+        // Set text on modal body.
+        seeMoreModal.querySelector("#nameLabel").textContent = project.name;
+        seeMoreModal.querySelector("#tagsValue").textContent = project.tags;
+        seeMoreModal.querySelector("#dateValue").textContent = project.date;
+        seeMoreModal.querySelector("#descriptionValue").textContent = project.description;
+
+        const footer = seeMoreModal.querySelector("#modalFooter");
+
+        // Clear previously added buttons from footer.
+        footer.querySelectorAll(".btn-primary").forEach(btn => btn.remove());
+
+        // Add dynamic buttons to footer.
+        if (project.links.code) {
+            addButtonToFooter(footer, project.links.code, "See Code");
+        }
+        if (project.links.demo) {
+            addButtonToFooter(footer, project.links.demo, "Demo It");
         }
     });
 });
