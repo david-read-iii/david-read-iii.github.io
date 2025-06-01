@@ -6,92 +6,28 @@
  */
 function addProjectToCardContainer(cardContainer, project) {
 
-    // Setup card layout.
-    var outerCardLayout = document.createElement("div");
-    outerCardLayout.setAttribute("class", "col");
-    outerCardLayout.setAttribute("id", project.id);
+    // Get template card.
+    const template = document.getElementById("card-template");
+    const card = template.content.cloneNode(true);
 
-    var innerCardLayout = document.createElement("div");
-    innerCardLayout.setAttribute("class", "card h-100");
+    // Set id.
+    const cardCol = card.querySelector(".col");
+    cardCol.id = project.summary.id;
 
-    outerCardLayout.appendChild(innerCardLayout);
+    // Setup image link.
+    const cardImgLink = card.querySelector(".card-img-link");
+    const cardImg = card.querySelector("img");
+    cardImg.src = project.summary.thumbnailUrl;
+    cardImgLink.href = project.summary.thumbnailUrl;
 
-    // Setup card image.
-    var imageLink = document.createElement("a");
-    imageLink.setAttribute("href", project.thumbnailUrl);
-    imageLink.setAttribute("target", "_blank");
-    imageLink.setAttribute("rel", "noreferrer noopener");
+    // Add text content.
+    card.querySelector(".card-title").textContent = project.summary.name;
+    card.querySelector(".tags").textContent = project.summary.tags;
+    card.querySelector(".date").textContent = project.summary.date;
 
-    var image = document.createElement("img");
-    image.setAttribute("class", "card-img-top");
-    image.setAttribute("src", project.thumbnailUrl);
+    // TODO: Add click listener for See Details button.
 
-    innerCardLayout.appendChild(imageLink);
-    imageLink.appendChild(image);
-
-    // Setup card body.
-    var cardBodyLayout = document.createElement("div");
-    cardBodyLayout.setAttribute("class", "card-body p-3");
-
-    var nameText = document.createElement("h5");
-    nameText.setAttribute("class", "card-title mb-3");
-    nameText.innerHTML = project.name;
-
-    var tagsText = document.createElement("h6");
-    tagsText.setAttribute("class", "card-subtitle mb-2 text-muted");
-    tagsText.innerHTML = project.tags;
-
-    var dateText = document.createElement("h6");
-    dateText.setAttribute("class", "card-subtitle mb-3 text-muted");
-    dateText.innerHTML = project.date;
-
-    var descriptionText = document.createElement("p");
-    descriptionText.setAttribute("class", "mb-0");
-    descriptionText.innerHTML = project.description;
-
-    innerCardLayout.appendChild(cardBodyLayout);
-    cardBodyLayout.appendChild(nameText);
-    cardBodyLayout.appendChild(tagsText);
-    cardBodyLayout.appendChild(dateText);
-    cardBodyLayout.appendChild(descriptionText);
-
-    // Setup card footer layout.
-    var outerCardFooterLayout = document.createElement("div");
-    outerCardFooterLayout.setAttribute("class", "card-footer p-3");
-
-    var innerCardFooterLayout = document.createElement("div");
-    innerCardFooterLayout.setAttribute("class", "float-end");
-
-    innerCardLayout.appendChild(outerCardFooterLayout);
-    outerCardFooterLayout.appendChild(innerCardFooterLayout);
-
-    // Setup card footer buttons.
-    if (project.codeUrl != "") {
-        var seeCodeButton = document.createElement("a");
-        seeCodeButton.setAttribute("class", "btn btn-primary");
-        seeCodeButton.setAttribute("type", "button");
-        seeCodeButton.setAttribute("href", project.codeUrl);
-        seeCodeButton.setAttribute("target", "_blank");
-        seeCodeButton.setAttribute("rel", "noreferrer noopener");
-        seeCodeButton.innerHTML = "See Code";
-
-        innerCardFooterLayout.appendChild(seeCodeButton);
-    }
-
-    if (project.projectUrl != "") {
-        var tryItButton = document.createElement("a");
-        tryItButton.setAttribute("class", "btn btn-primary ms-3");
-        tryItButton.setAttribute("type", "button");
-        tryItButton.setAttribute("href", project.projectUrl);
-        tryItButton.setAttribute("target", "_blank");
-        tryItButton.setAttribute("rel", "noreferrer noopener");
-        tryItButton.innerHTML = "Try It";
-
-        innerCardFooterLayout.appendChild(tryItButton);
-    }
-
-    // Add card to the card container.
-    cardContainer.appendChild(outerCardLayout);
+    cardContainer.appendChild(card);
 }
 
 /**
@@ -116,11 +52,13 @@ function highlightAndScrollIntoCard(id) {
 $(document).ready(function () {
 
     // Get projects array using a GET HTTP request.
-    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/projects.json", function (projects) {
+    // TODO: DO NOT MERGE THIS TO RELEASE! IT IS POINTING AT THE DEBUG JSON FOR NOW!
+    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/projects-debug.json", function (projects) {
 
         // Add a card in the card container for each project in the projects array.
         var cardContainerLayout = document.getElementById("card-container");
         for (var i = 0; i < projects.length; i++) {
+            console.log
             addProjectToCardContainer(cardContainerLayout, projects[i]);
         }
 
