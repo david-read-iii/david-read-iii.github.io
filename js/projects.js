@@ -12,18 +12,18 @@ function addProjectToCardContainer(cardContainer, project) {
 
     // Set id.
     const cardCol = card.querySelector(".col");
-    cardCol.id = project.summary.id;
+    cardCol.id = project.id;
 
     // Setup image link.
     const cardImgLink = card.querySelector(".card-img-link");
     const cardImg = card.querySelector("img");
-    cardImg.src = project.summary.thumbnailUrl;
-    cardImgLink.href = project.summary.thumbnailUrl;
+    cardImg.src = project.thumbnailUrl;
+    cardImgLink.href = project.thumbnailUrl;
 
     // Add text content.
-    card.querySelector(".card-title").textContent = project.summary.name;
-    card.querySelector(".tags").textContent = project.summary.tags;
-    card.querySelector(".date").textContent = project.summary.date;
+    card.querySelector(".card-title").textContent = project.name;
+    card.querySelector(".tags").textContent = project.tags;
+    card.querySelector(".date").textContent = project.date;
 
     // TODO: Add click listener for See Details button.
 
