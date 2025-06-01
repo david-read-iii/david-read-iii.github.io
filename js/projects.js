@@ -6,92 +6,46 @@
  */
 function addProjectToCardContainer(cardContainer, project) {
 
-    // Setup card layout.
-    var outerCardLayout = document.createElement("div");
-    outerCardLayout.setAttribute("class", "col");
-    outerCardLayout.setAttribute("id", project.id);
+    // Get template card.
+    const template = document.getElementById("card-template");
+    const card = template.content.cloneNode(true);
 
-    var innerCardLayout = document.createElement("div");
-    innerCardLayout.setAttribute("class", "card h-100");
+    // Set id.
+    const cardCol = card.querySelector(".col");
+    cardCol.id = project.id;
 
-    outerCardLayout.appendChild(innerCardLayout);
+    // Setup image link.
+    const cardImgLink = card.querySelector(".card-img-link");
+    const cardImg = card.querySelector("img");
+    cardImg.src = project.thumbnailUrl;
+    cardImgLink.href = project.thumbnailUrl;
 
-    // Setup card image.
-    var imageLink = document.createElement("a");
-    imageLink.setAttribute("href", project.thumbnailUrl);
-    imageLink.setAttribute("target", "_blank");
-    imageLink.setAttribute("rel", "noreferrer noopener");
+    // Add text content.
+    card.querySelector(".card-title").textContent = project.name;
+    card.querySelector(".tags").textContent = project.tags;
+    card.querySelector(".date").textContent = project.date;
+    card.querySelector(".description").textContent = project.description;
 
-    var image = document.createElement("img");
-    image.setAttribute("class", "card-img-top");
-    image.setAttribute("src", project.thumbnailUrl);
+    // Setup buttons.
+    const buttonContainer = card.querySelector(".buttons");
+    const buttonTemplate = document.getElementById("card-button-template");
 
-    innerCardLayout.appendChild(imageLink);
-    imageLink.appendChild(image);
-
-    // Setup card body.
-    var cardBodyLayout = document.createElement("div");
-    cardBodyLayout.setAttribute("class", "card-body p-3");
-
-    var nameText = document.createElement("h5");
-    nameText.setAttribute("class", "card-title mb-3");
-    nameText.innerHTML = project.name;
-
-    var tagsText = document.createElement("h6");
-    tagsText.setAttribute("class", "card-subtitle mb-2 text-muted");
-    tagsText.innerHTML = project.tags;
-
-    var dateText = document.createElement("h6");
-    dateText.setAttribute("class", "card-subtitle mb-3 text-muted");
-    dateText.innerHTML = project.date;
-
-    var descriptionText = document.createElement("p");
-    descriptionText.setAttribute("class", "mb-0");
-    descriptionText.innerHTML = project.description;
-
-    innerCardLayout.appendChild(cardBodyLayout);
-    cardBodyLayout.appendChild(nameText);
-    cardBodyLayout.appendChild(tagsText);
-    cardBodyLayout.appendChild(dateText);
-    cardBodyLayout.appendChild(descriptionText);
-
-    // Setup card footer layout.
-    var outerCardFooterLayout = document.createElement("div");
-    outerCardFooterLayout.setAttribute("class", "card-footer p-3");
-
-    var innerCardFooterLayout = document.createElement("div");
-    innerCardFooterLayout.setAttribute("class", "float-end");
-
-    innerCardLayout.appendChild(outerCardFooterLayout);
-    outerCardFooterLayout.appendChild(innerCardFooterLayout);
-
-    // Setup card footer buttons.
-    if (project.codeUrl != "") {
-        var seeCodeButton = document.createElement("a");
-        seeCodeButton.setAttribute("class", "btn btn-primary");
-        seeCodeButton.setAttribute("type", "button");
-        seeCodeButton.setAttribute("href", project.codeUrl);
-        seeCodeButton.setAttribute("target", "_blank");
-        seeCodeButton.setAttribute("rel", "noreferrer noopener");
-        seeCodeButton.innerHTML = "See Code";
-
-        innerCardFooterLayout.appendChild(seeCodeButton);
+    if (project.codeUrl) {
+        const codeBtn = buttonTemplate.content.cloneNode(true).querySelector("a");
+        codeBtn.href = project.codeUrl;
+        codeBtn.textContent = "See Code";
+        buttonContainer.appendChild(codeBtn);
     }
 
-    if (project.projectUrl != "") {
-        var tryItButton = document.createElement("a");
-        tryItButton.setAttribute("class", "btn btn-primary ms-3");
-        tryItButton.setAttribute("type", "button");
-        tryItButton.setAttribute("href", project.projectUrl);
-        tryItButton.setAttribute("target", "_blank");
-        tryItButton.setAttribute("rel", "noreferrer noopener");
-        tryItButton.innerHTML = "Try It";
-
-        innerCardFooterLayout.appendChild(tryItButton);
+    if (project.projectUrl) {
+        const tryBtn = buttonTemplate.content.cloneNode(true).querySelector("a");
+        tryBtn.href = project.projectUrl;
+        tryBtn.textContent = "Try It";
+        tryBtn.classList.add("ms-3"); // Add margin-left to separate it
+        buttonContainer.appendChild(tryBtn);
     }
 
-    // Add card to the card container.
-    cardContainer.appendChild(outerCardLayout);
+    cardContainer.appendChild(card);
 }
 
 /**
