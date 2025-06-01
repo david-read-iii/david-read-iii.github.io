@@ -12,18 +12,18 @@ function addProjectToCardContainer(cardContainer, project) {
 
     // Set id.
     const cardCol = card.querySelector(".col");
-    cardCol.id = project.id;
+    cardCol.id = project.summary.id;
 
     // Setup image link.
     const cardImgLink = card.querySelector(".card-img-link");
     const cardImg = card.querySelector("img");
-    cardImg.src = project.thumbnailUrl;
-    cardImgLink.href = project.thumbnailUrl;
+    cardImg.src = project.summary.thumbnailUrl;
+    cardImgLink.href = project.summary.thumbnailUrl;
 
     // Add text content.
-    card.querySelector(".card-title").textContent = project.name;
-    card.querySelector(".tags").textContent = project.tags;
-    card.querySelector(".date").textContent = project.date;
+    card.querySelector(".card-title").textContent = project.summary.name;
+    card.querySelector(".tags").textContent = project.summary.tags;
+    card.querySelector(".date").textContent = project.summary.date;
 
     // TODO: Add click listener for See Details button.
 
@@ -52,11 +52,13 @@ function highlightAndScrollIntoCard(id) {
 $(document).ready(function () {
 
     // Get projects array using a GET HTTP request.
-    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/projects.json", function (projects) {
+    // TODO: DO NOT MERGE THIS TO RELEASE! IT IS POINTING AT THE DEBUG JSON FOR NOW!
+    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/projects-debug.json", function (projects) {
 
         // Add a card in the card container for each project in the projects array.
         var cardContainerLayout = document.getElementById("card-container");
         for (var i = 0; i < projects.length; i++) {
+            console.log
             addProjectToCardContainer(cardContainerLayout, projects[i]);
         }
 
