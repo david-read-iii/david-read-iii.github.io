@@ -24,26 +24,8 @@ function addProjectToCardContainer(cardContainer, project) {
     card.querySelector(".card-title").textContent = project.name;
     card.querySelector(".tags").textContent = project.tags;
     card.querySelector(".date").textContent = project.date;
-    card.querySelector(".description").textContent = project.description;
 
-    // Setup buttons.
-    const buttonContainer = card.querySelector(".buttons");
-    const buttonTemplate = document.getElementById("card-button-template");
-
-    if (project.codeUrl) {
-        const codeBtn = buttonTemplate.content.cloneNode(true).querySelector("a");
-        codeBtn.href = project.codeUrl;
-        codeBtn.textContent = "See Code";
-        buttonContainer.appendChild(codeBtn);
-    }
-
-    if (project.projectUrl) {
-        const tryBtn = buttonTemplate.content.cloneNode(true).querySelector("a");
-        tryBtn.href = project.projectUrl;
-        tryBtn.textContent = "Try It";
-        tryBtn.classList.add("ms-3"); // Add margin-left to separate it
-        buttonContainer.appendChild(tryBtn);
-    }
+    // TODO: Add click listener for See Details button.
 
     cardContainer.appendChild(card);
 }
