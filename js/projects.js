@@ -71,6 +71,23 @@ function addButtonToFooter(footer, href, textContent) {
     footer.appendChild(button)
 }
 
+function addCarouselItemToCarouselInner(carouselInner, mediaItem) {
+    if (mediaItem.type === "IMAGE") {
+        // Get template carouselItem.
+        const template = document.getElementById("modalCarouselItemTemplate");
+        const carouselItem = template.content.cloneNode(true).firstElementChild;
+
+        // Set data on carouselItem.
+        carouselItem.querySelector("#carouselItemLink").href = mediaItem.url;
+        carouselItem.querySelector("#carouselItemImg").src = mediaItem.url;
+
+        // Add carouselItem to carouselInner.
+        carouselInner.appendChild(carouselItem);
+    } else if (mediaItem.type === "VIDEO") {
+        // TODO: Add logic for YouTube video carousel item.
+    }
+}
+
 $(document).ready(function () {
 
     // Get projects array using a GET HTTP request.
@@ -111,6 +128,15 @@ document.addEventListener("DOMContentLoaded", function () {
     seeMoreModal.addEventListener("show.bs.modal", function (event) {
         const button = event.relatedTarget;
         const project = JSON.parse(button.getAttribute("data-project"));
+
+        // Setup Carousel.
+        const carouselInner = seeMoreModal.querySelector("#carouselInner");
+        project.media.forEach((mediaItem, index) => {
+            addCarouselItemToCarouselInner(carouselInner, mediaItem);
+        });
+
+        // Set active indicator/inner.
+        carouselInner.firstElementChild.classList.add("active");
 
         // Set text on modal body.
         seeMoreModal.querySelector("#nameLabel").textContent = project.name;

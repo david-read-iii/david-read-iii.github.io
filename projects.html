@@ -121,6 +121,27 @@
                 <!-- Modal body. -->
                 <div class="modal-body">
 
+                    <!-- Carousel. -->
+                    <div id="carouselIndicators" class="carousel slide mb-3" data-bs-ride="carousel">
+
+                        <!-- Carousel images. -->
+                        <div class="carousel-inner" id="carouselInner"></div>
+
+                        <!-- Previous button. -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+
+                        <!-- Next button. -->
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+
                     <!-- Tags. -->
                     <div class="row">
                         <p class="col col-lg-2">Tags</p>
@@ -149,6 +170,15 @@
             </div>
         </div>
     </div>
+
+    <!-- TODO: Add alt text to each carousel item. Get from service response??? -->
+    <template id="modalCarouselItemTemplate">
+        <div class="carousel-item">
+            <a id="carouselItemLink" target="_blank" rel="noreferrer noopener">
+                <img id="carouselItemImg" class="d-block w-100" alt="...">
+            </a>
+        </div>
+    </template>
 
     <template id="modalButtonTemplate">
         <a class="btn btn-primary" target="_blank" rel="noopener noreferrer"></a>
