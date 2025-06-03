@@ -16,9 +16,10 @@ function addProjectToCardContainer(cardContainer, project) {
 
     // Setup image link.
     const cardImgLink = card.querySelector(".card-img-link");
+    cardImgLink.href = project.thumbnail.url;
     const cardImg = card.querySelector("img");
-    cardImg.src = project.thumbnailUrl;
-    cardImgLink.href = project.thumbnailUrl;
+    cardImg.src = project.thumbnail.url;
+    cardImg.alt = project.thumbnail.altText;
 
     // Add text content.
     card.querySelector(".card-title").textContent = project.name;
@@ -91,7 +92,9 @@ function addCarouselItemToCarouselInner(carouselInner, mediaItem) {
 
         // Set data on carouselItem.
         carouselItem.querySelector("#carouselItemLink").href = mediaItem.url;
-        carouselItem.querySelector("#carouselItemImg").src = mediaItem.url;
+        const carouselItemImg = carouselItem.querySelector("#carouselItemImg");
+        carouselItemImg.src = mediaItem.url;
+        carouselItemImg.alt = mediaItem.altText;
 
         // Add carouselItem to carouselInner.
         carouselInner.appendChild(carouselItem);
@@ -101,7 +104,9 @@ function addCarouselItemToCarouselInner(carouselInner, mediaItem) {
         const carouselItem = template.content.cloneNode(true).firstElementChild;
 
         // Set data on carouselItem.
-        carouselItem.querySelector("#carouselItemIframe").src = mediaItem.url;
+        const carouselItemIframe = carouselItem.querySelector("#carouselItemIframe");
+        carouselItemIframe.src = mediaItem.url;
+        carouselItemIframe.title = mediaItem.altText;
 
         // Add carouselItem to carouselInner.
         carouselInner.appendChild(carouselItem);
@@ -177,11 +182,11 @@ document.addEventListener("DOMContentLoaded", function () {
         footer.querySelectorAll(".btn-primary").forEach(btn => btn.remove());
 
         // Add dynamic buttons to footer.
-        if (project.links.code) {
-            addButtonToFooter(footer, project.links.code, "See Code");
+        if (project.links.codeUrl) {
+            addButtonToFooter(footer, project.links.codeUrl, "See Code");
         }
-        if (project.links.demo) {
-            addButtonToFooter(footer, project.links.demo, "Demo It");
+        if (project.links.demoUrl) {
+            addButtonToFooter(footer, project.links.codeUrl, "Demo It");
         }
     });
 
