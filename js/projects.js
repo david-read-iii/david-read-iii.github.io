@@ -71,6 +71,18 @@ function addButtonToFooter(footer, href, textContent) {
     footer.appendChild(button)
 }
 
+/**
+ * Appends a media item to a carousel container using a predefined template.
+ * 
+ * Currently supports only image media. The function clones a template
+ * (`#modalCarouselItemTemplate`), sets the image/link, and appends it to 
+ * the provided `carouselInner` element.
+ * 
+ * @param {HTMLElement} carouselInner - The `#carouselInner` container element.
+ * @param {Object} mediaItem - Media data object.
+ * @param {string} mediaItem.type - Type of media ("IMAGE" supported).
+ * @param {string} mediaItem.url - URL of the media item.
+ */
 function addCarouselItemToCarouselInner(carouselInner, mediaItem) {
     if (mediaItem.type === "IMAGE") {
         // Get template carouselItem.
