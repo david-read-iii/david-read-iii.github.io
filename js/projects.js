@@ -158,6 +158,13 @@ document.addEventListener("DOMContentLoaded", function () {
         // Set active indicator/inner.
         carouselInner.firstElementChild.classList.add("active");
 
+        // Disable auto-scrolling of carousel.
+        const carouselElement = seeMoreModal.querySelector('#carouselIndicators');
+        const carouselInstance = bootstrap.Carousel.getInstance(carouselElement)
+            || new bootstrap.Carousel(carouselElement, { interval: false, ride: false });
+        carouselInstance.pause();
+
+
         // Set text on modal body.
         seeMoreModal.querySelector("#nameLabel").textContent = project.name;
         seeMoreModal.querySelector("#tagsValue").textContent = project.tags;
@@ -176,5 +183,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (project.links.demo) {
             addButtonToFooter(footer, project.links.demo, "Demo It");
         }
+    });
+
+    // See More Modal hide modal event listener.
+    seeMoreModal.addEventListener("hidden.bs.modal", function () {
+        // Clear carousel content after closing.
+        const carouselInner = seeMoreModal.querySelector("#carouselInner");
+        carouselInner.innerHTML = '';
     });
 });
