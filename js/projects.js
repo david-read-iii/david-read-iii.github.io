@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
         carouselInner.firstElementChild.classList.add("active");
 
         // Disable auto-scrolling of carousel.
-        const carouselElement = seeMoreModal.querySelector('#carouselIndicators');
+        const carouselElement = seeMoreModal.querySelector('#carousel');
         const carouselInstance = bootstrap.Carousel.getInstance(carouselElement)
             || new bootstrap.Carousel(carouselElement, { interval: false, ride: false });
         carouselInstance.pause();
