@@ -72,21 +72,21 @@ function addButtonToFooter(footer, href, textContent) {
 }
 
 /**
- * Appends a media item to a carousel container using a predefined template.
- * 
- * Currently supports only image media. The function clones a template
- * (`#modalCarouselItemTemplate`), sets the image/link, and appends it to 
- * the provided `carouselInner` element.
- * 
- * @param {HTMLElement} carouselInner - The `#carouselInner` container element.
- * @param {Object} mediaItem - Media data object.
- * @param {string} mediaItem.type - Type of media ("IMAGE" supported).
- * @param {string} mediaItem.url - URL of the media item.
+ * Adds a media item (image or video) to a Bootstrap carousel's inner container.
+ *
+ * This function clones a template element based on the type of media (`IMAGE` or `VIDEO`),
+ * sets the appropriate media URL on the cloned element, and appends it to the provided
+ * `carouselInner` container.
+ *
+ * @param {HTMLElement} carouselInner - The `#carouselInner` container element where the new item will be inserted.
+ * @param {Object} mediaItem - The media item to add. Must include a `type` property (`"IMAGE"` or `"VIDEO"`) and a `url` property.
+ * @param {string} mediaItem.type - The type of media, either `"IMAGE"` or `"VIDEO"`.
+ * @param {string} mediaItem.url - The URL of the image or video to embed.
  */
 function addCarouselItemToCarouselInner(carouselInner, mediaItem) {
     if (mediaItem.type === "IMAGE") {
         // Get template carouselItem.
-        const template = document.getElementById("modalCarouselItemTemplate");
+        const template = document.getElementById("modalCarouselItemImageTemplate");
         const carouselItem = template.content.cloneNode(true).firstElementChild;
 
         // Set data on carouselItem.
@@ -96,7 +96,15 @@ function addCarouselItemToCarouselInner(carouselInner, mediaItem) {
         // Add carouselItem to carouselInner.
         carouselInner.appendChild(carouselItem);
     } else if (mediaItem.type === "VIDEO") {
-        // TODO: Add logic for YouTube video carousel item.
+        // Get template carouselItem.
+        const template = document.getElementById("modalCarouselItemVideoTemplate");
+        const carouselItem = template.content.cloneNode(true).firstElementChild;
+
+        // Set data on carouselItem.
+        carouselItem.querySelector("#carouselItemIframe").src = mediaItem.url;
+
+        // Add carouselItem to carouselInner.
+        carouselInner.appendChild(carouselItem);
     }
 }
 
