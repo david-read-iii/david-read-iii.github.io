@@ -231,4 +231,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const carouselInner = seeMoreModal.querySelector("#carouselInner");
         setCarouselIndicatorText(carouselIndicatorText, carouselInner);
     });
+
+    // TODO: Consider putting this on every page with buttons (all of them).
+    // Removes default button behavior that makes them look active after clicking a button. 
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('mouseup', () => button.blur());
+    });
 });
