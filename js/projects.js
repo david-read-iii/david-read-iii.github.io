@@ -113,6 +113,25 @@ function addCarouselItemToCarouselInner(carouselInner, mediaItem) {
     }
 }
 
+/**
+ * Updates the text and ARIA label of a carousel indicator element to reflect
+ * the current active slide in a Bootstrap carousel.
+ *
+ * The indicator will show text in the format "1 / N", where N is the total number of
+ * carousel items, and the first item is indexed as 1. It also updates the `aria-label`
+ * for accessibility to indicate which item is currently selected.
+ *
+ * @param {HTMLElement} carouselIndicatorText - The DOM element where the indicator text should be displayed.
+ * @param {HTMLElement} carouselInner - The `.carousel-inner` container that holds the `.carousel-item` elements.
+ */
+function setCarouselIndicatorText(carouselIndicatorText, carouselInner) {
+    const items = carouselInner.querySelectorAll(".carousel-item");
+    const total = items.length;
+    const activeIndex = Array.from(items).findIndex(item => item.classList.contains("active"));
+    carouselIndicatorText.textContent = `${activeIndex + 1} / ${total}`;
+    carouselIndicatorText.setAttribute("aria-label", `Item ${activeIndex + 1} of ${total} selected in carousel.`);
+}
+
 $(document).ready(function () {
 
     // Get projects array using a GET HTTP request.
@@ -160,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
             addCarouselItemToCarouselInner(carouselInner, mediaItem);
         });
 
-        // Set active indicator/inner.
+        // Set active carousel item.
         carouselInner.firstElementChild.classList.add("active");
 
         // Disable auto-scrolling of carousel.
@@ -169,6 +188,9 @@ document.addEventListener("DOMContentLoaded", function () {
             || new bootstrap.Carousel(carouselElement, { interval: false, ride: false });
         carouselInstance.pause();
 
+        // Set indicator text.
+        const carouselIndicatorText = seeMoreModal.querySelector("#carouselIndicatorText");
+        setCarouselIndicatorText(carouselIndicatorText, carouselInner);
 
         // Set text on modal body.
         seeMoreModal.querySelector("#nameLabel").textContent = project.name;
@@ -192,8 +214,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // See More Modal hide modal event listener.
     seeMoreModal.addEventListener("hidden.bs.modal", function () {
-        // Clear carousel content after closing.
+        // Clear carousel items after closing.
         const carouselInner = seeMoreModal.querySelector("#carouselInner");
         carouselInner.innerHTML = '';
+
+        // Clear carousel indicator after closing.
+        const carouselIndicatorText = seeMoreModal.querySelector("#carouselIndicatorText");
+        carouselIndicatorText.textContent = "";
+    });
+
+    const carousel = seeMoreModal.querySelector("#carousel");
+
+    // Carousel slide event listener.
+    carousel.addEventListener("slid.bs.carousel", function () {
+        const carouselIndicatorText = seeMoreModal.querySelector("#carouselIndicatorText");
+        const carouselInner = seeMoreModal.querySelector("#carouselInner");
+        setCarouselIndicatorText(carouselIndicatorText, carouselInner);
     });
 });
