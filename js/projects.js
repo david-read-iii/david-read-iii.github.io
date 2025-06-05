@@ -34,16 +34,16 @@ function addProjectToCardContainer(cardContainer, project) {
 }
 
 /**
- * Highlights and scrolls into the card with the provided id.
- * 
- * @param {string} id - An id of a card.
+ * Adds highlight styles to a card and its footer, then scrolls it into view.
+ *
+ * @param {string} id - ID of the card container element.
  */
 function highlightAndScrollIntoCard(id) {
 
     // Highlight card.
-    var outerCardLayout = document.getElementById(document.location.hash.substring(1));
-    var innerCardLayout = outerCardLayout.getElementsByClassName("card")[0];
-    var outerCardFooterLayout = outerCardLayout.getElementsByClassName("card-footer")[0];
+    const outerCardLayout = document.getElementById(id);
+    const innerCardLayout = outerCardLayout.getElementsByClassName("card")[0];
+    const outerCardFooterLayout = outerCardLayout.getElementsByClassName("card-footer")[0];
 
     innerCardLayout.classList.add("card-highlight");
     outerCardFooterLayout.classList.add("card-footer-highlight");
@@ -144,14 +144,15 @@ $(document).ready(function () {
             addProjectToCardContainer(cardContainerLayout, projects[i]);
         }
 
-        /* If the URL refers to a particular card in the card container, wait for all images to load. Then, highlight the referred to
-         * card and scroll into it. */
-        if (document.location.hash) {
+        // If the URL refers to a particular card, wait for all images to load. Then, highlight the card and scroll to it.
+        const params = new URLSearchParams(window.location.search);
+        const projectParam = params.get("project");
+        if (projectParam != null) {
 
             function imageLoaded() {
                 imagesLoaded++;
                 if (imagesLoaded == totalImages) {
-                    highlightAndScrollIntoCard(document.location.hash.substring(1));
+                    highlightAndScrollIntoCard(projectParam);
                 }
             }
 
