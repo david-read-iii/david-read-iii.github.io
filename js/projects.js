@@ -135,8 +135,7 @@ function setCarouselIndicatorText(carouselIndicatorText, carouselInner) {
 $(document).ready(function () {
 
     // Get projects array using a GET HTTP request.
-    // TODO: DO NOT MERGE THIS TO RELEASE! IT IS POINTING AT THE DEBUG JSON FOR NOW!
-    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/projects-debug.json", function (projects) {
+    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/projects.json", function (projects) {
 
         // Add a card in the card container for each project in the projects array.
         var cardContainerLayout = document.getElementById("card-container");
