@@ -29,6 +29,7 @@
     <link href="css/projects.css" rel="stylesheet">
 
     <!-- Import developer JS. -->
+    <script src="js/common.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/projects.js"></script>
 
@@ -66,19 +67,19 @@
 
         <!-- Email button. -->
         <a class="btn btn-outline-light btn-floating" href="mailto:david.read.me@gmail.com" role="button"
-            target="_blank" rel="noreferrer noopener">
+            target="_blank" rel="noreferrer noopener" title="Email me">
             <i class="fas fa-envelope"></i>
         </a>
 
         <!-- LinkedIn button. -->
         <a class="btn btn-outline-light btn-floating" href="https://www.linkedin.com/in/david-read-iii/" role="button"
-            target="_blank" rel="noreferrer noopener">
+            target="_blank" rel="noreferrer noopener" title="See my LinkedIn">
             <i class="fab fa-linkedin-in"></i>
         </a>
 
         <!-- GitHub button. -->
         <a class="btn btn-outline-light btn-floating" href="https://github.com/david-read-iii" role="button"
-            target="_blank" rel="noreferrer noopener">
+            target="_blank" rel="noreferrer noopener" title="See my GitHub">
             <i class="fab fa-github"></i>
         </a>
 
@@ -88,21 +89,114 @@
     <template id="card-template">
         <div class="col">
             <div class="card h-100">
+                <!-- Header thumbnail. -->
                 <a class="card-img-link" target="_blank" rel="noreferrer noopener">
-                    <img class="card-img-top" src="" alt="Project thumbnail">
+                    <div class="ratio ratio-16x9">
+                        <img class="card-img-top" style="object-fit: contain;">
+                    </div>
                 </a>
+                <!-- Body. -->
                 <div class="card-body p-3">
                     <h5 class="card-title mb-3"></h5>
                     <h6 class="card-subtitle mb-2 text-muted tags"></h6>
                     <h6 class="card-subtitle mb-0 text-muted date"></h6>
                 </div>
+                <!-- Footer. -->
                 <div class="card-footer p-3">
                     <div class="float-end buttons">
-                        <a class="btn btn-primary" target="_blank" rel="noreferrer noopener">See More</a>
+                        <a class="btn btn-primary" id="seeMoreButton" target="_blank" rel="noreferrer noopener"
+                            data-bs-toggle="modal" data-bs-target="#seeMoreModal">See More</a>
                     </div>
                 </div>
             </div>
         </div>
+    </template>
+
+    <!-- See More modal. -->
+    <div class="modal fade" id="seeMoreModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal header. -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="nameLabel"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <!-- Modal body. -->
+                <div class="modal-body">
+
+                    <!-- Carousel. -->
+                    <div id="carousel" class="carousel slide mb-3" data-bs-ride="false">
+                        <div class="carousel-inner" id="carouselInner"></div>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center gap-3 mb-3">
+                        <!-- Carousel previous button. -->
+                        <button class="btn btn-secondary" type="button" data-bs-target="#carousel" data-bs-slide="prev"
+                            aria-label="Slide to previous item">←</button>
+                        <!-- Carousel indicator text. -->
+                        <span id="carouselIndicatorText"></span>
+                        <!-- Carousel next button. -->
+                        <button class="btn btn-secondary" type="button" data-bs-target="#carousel" data-bs-slide="next"
+                            aria-label="Slide to next item">→</button>
+                    </div>
+
+                    <!-- Tags. -->
+                    <div class="row">
+                        <p class="col col-lg-2">Tags</p>
+                        <p class="col" id="tagsValue"></p>
+                    </div>
+
+                    <!-- Date. -->
+                    <div class="row">
+                        <p class="col col-lg-2">Date</p>
+                        <p class="col" id="dateValue"></p>
+                    </div>
+
+                    <!-- Description. -->
+                    <div class="row">
+                        <p class="col col-lg-2 mb-0">Description</p>
+                        <p class="col mb-0" id="descriptionValue"></p>
+                    </div>
+
+                </div>
+
+                <!-- Modal footer. -->
+                <div class="modal-footer" id="modalFooter">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel item image template. -->
+    <template id="modalCarouselItemImageTemplate">
+        <div class="carousel-item">
+            <a id="carouselItemLink" target="_blank" rel="noreferrer noopener">
+                <div class="ratio ratio-16x9">
+                    <img id="carouselItemImg" class="h-100 w-100" style="object-fit: contain;">
+                </div>
+            </a>
+        </div>
+    </template>
+
+    <!-- Carousel item video template. -->
+    <template id="modalCarouselItemVideoTemplate">
+        <div class="carousel-item">
+            <div class="ratio ratio-16x9">
+                <iframe id="carouselItemIframe" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </template>
+
+    <!-- Modal footer button template. -->
+    <template id="modalButtonTemplate">
+        <a class="btn btn-primary" target="_blank" rel="noopener noreferrer"></a>
     </template>
 
 </body>
