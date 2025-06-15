@@ -58,7 +58,8 @@
     <main class="p-5">
 
         <!-- Card container. -->
-        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 justify-content-center g-5" id="card-container"></div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-center g-5"
+            id="card-container"></div>
 
     </main>
 
@@ -98,8 +99,14 @@
                 <!-- Body. -->
                 <div class="card-body p-3">
                     <h5 class="card-title mb-3"></h5>
-                    <h6 class="card-subtitle mb-2 text-muted tags"></h6>
-                    <h6 class="card-subtitle mb-0 text-muted date"></h6>
+                    <div class="d-flex mb-2">
+                        <i class="fas fa-tags fa-fw me-2 align-self-start text-muted"></i>
+                        <span class="card-subtitle text-muted tags"></span>
+                    </div>
+                    <div class="d-flex mb-2">
+                        <i class="fas fa-calendar-alt fa-fw me-2 align-self-start text-muted"></i>
+                        <span class="card-subtitle text-muted date"></span>
+                    </div>
                 </div>
                 <!-- Footer. -->
                 <div class="card-footer p-3">
@@ -145,20 +152,20 @@
 
                     <!-- Tags. -->
                     <div class="row">
-                        <p class="col col-lg-2">Tags</p>
-                        <p class="col" id="tagsValue"></p>
+                        <p class="col col-4 col-lg-2">Tags</p>
+                        <p class="col col-8 col-lg" id="tagsValue"></p>
                     </div>
 
                     <!-- Date. -->
                     <div class="row">
-                        <p class="col col-lg-2">Date</p>
-                        <p class="col" id="dateValue"></p>
+                        <p class="col col-4 col-lg-2">Date</p>
+                        <p class="col col-8 col-lg" id="dateValue"></p>
                     </div>
 
                     <!-- Description. -->
                     <div class="row">
-                        <p class="col col-lg-2 mb-0">Description</p>
-                        <p class="col mb-0" id="descriptionValue"></p>
+                        <p class="col col-4 col-lg-2 mb-0">Description</p>
+                        <p class="col col-8 col-lg mb-0" id="descriptionValue"></p>
                     </div>
 
                 </div>
