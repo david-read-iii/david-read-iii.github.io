@@ -132,43 +132,39 @@ function setCarouselIndicatorText(carouselIndicatorText, carouselInner) {
     carouselIndicatorText.setAttribute("aria-label", `Item ${activeIndex + 1} of ${total} selected in carousel.`);
 }
 
-$(document).ready(function () {
-
-    // Get projects array using a GET HTTP request.
-    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/projects.json", function (projects) {
-
-        // Add a card in the card container for each project in the projects array.
-        var cardContainerLayout = document.getElementById("card-container");
-        for (var i = 0; i < projects.length; i++) {
-            addProjectToCardContainer(cardContainerLayout, projects[i]);
-        }
-
-        // If the URL refers to a particular card, wait for all images to load. Then, highlight the card and scroll to it.
-        const params = new URLSearchParams(window.location.search);
-        const projectParam = params.get("project");
-        if (projectParam != null) {
-
-            function imageLoaded() {
-                imagesLoaded++;
-                if (imagesLoaded == totalImages) {
-                    highlightAndScrollIntoCard(projectParam);
-                }
+document.addEventListener("DOMContentLoaded", function () {
+    // Fetch and render projects
+    fetch("https://david-read-portfolio-default-rtdb.firebaseio.com/projects.json")
+        .then(response => response.json())
+        .then(projects => {
+            const cardContainerLayout = document.getElementById("card-container");
+            for (let i = 0; i < projects.length; i++) {
+                addProjectToCardContainer(cardContainerLayout, projects[i]);
             }
 
-            var imagesLoaded = 0;
-            var totalImages = projects.length;
+            // If the URL refers to a particular card, wait for all images to load. Then scroll to it.
+            const params = new URLSearchParams(window.location.search);
+            const projectParam = params.get("project");
+            if (projectParam != null) {
+                let imagesLoaded = 0;
+                const totalImages = projects.length;
 
-            $("img").each(function (idx, img) {
-                $("<img>").on("load", imageLoaded).attr("src", $(img).attr("src"));
-            });
-        }
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const seeMoreModal = document.getElementById("seeMoreModal");
+                document.querySelectorAll("img").forEach((img) => {
+                    const preload = new Image();
+                    preload.onload = () => {
+                        imagesLoaded++;
+                        if (imagesLoaded === totalImages) {
+                            highlightAndScrollIntoCard(projectParam);
+                        }
+                    };
+                    preload.src = img.src;
+                });
+            }
+        })
+        .catch(error => console.error("Failed to fetch projects:", error));
 
     // See More Modal show modal event listener.
+    const seeMoreModal = document.getElementById("seeMoreModal");
     seeMoreModal.addEventListener("show.bs.modal", function (event) {
         const button = event.relatedTarget;
         const project = JSON.parse(button.getAttribute("data-project"));
@@ -223,12 +219,11 @@ document.addEventListener("DOMContentLoaded", function () {
         carouselIndicatorText.textContent = "";
     });
 
-    const carousel = seeMoreModal.querySelector("#carousel");
-
     // Carousel slide event listener.
+    const carousel = seeMoreModal.querySelector("#carousel");
     carousel.addEventListener("slid.bs.carousel", function () {
         const carouselIndicatorText = seeMoreModal.querySelector("#carouselIndicatorText");
         const carouselInner = seeMoreModal.querySelector("#carouselInner");
         setCarouselIndicatorText(carouselIndicatorText, carouselInner);
     });
-});x
+}); x
