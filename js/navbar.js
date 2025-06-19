@@ -72,9 +72,13 @@ function addItemToResumeDropdownMenu(dropdownMenu, resume) {
     dropdownMenu.appendChild(htmlLiElement);
 }
 
-$(document).ready(function () {
-    // Get resumes array using a GET HTTP request.
-    $.getJSON("https://david-read-portfolio-default-rtdb.firebaseio.com/resumes.json", function (resumes) {
-        setupResumeNavItemContainer(resumes)
-    });
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("https://david-read-portfolio-default-rtdb.firebaseio.com/resumes.json")
+        .then(response => response.json())
+        .then(resumes => {
+            setupResumeNavItemContainer(resumes);
+        })
+        .catch(error => {
+            console.error("Failed to fetch resumes:", error);
+        });
 });
