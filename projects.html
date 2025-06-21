@@ -44,7 +44,11 @@
             <a class="nav-item nav-link" href="/">Home</a>
             <a class="nav-item nav-link" href="about.html">About</a>
             <a class="nav-item nav-link active" href="projects.html">Projects</a>
-            <div id="resume-nav-item-container"></div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="resume-dropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">Resumes</a>
+                <ul class="dropdown-menu" id="resume-dropdown-menu" aria-labelledby="resume-dropdown"></ul>
+            </li>
             <a class="nav-item nav-link" href="contact.html">Contact</a>
         </div>
 
@@ -200,20 +204,6 @@
     <!-- Modal footer button template. -->
     <template id="modalButtonTemplate">
         <a class="btn btn-primary" target="_blank" rel="noopener noreferrer"></a>
-    </template>
-
-    <!-- Single Resume Link Template for Navbar. -->
-    <template id="singleResumeLinkTemplate">
-        <a class="nav-item nav-link" target="_blank" rel="noreferrer noopener">Resume</a>
-    </template>
-
-    <!-- Multiple Resumes Link Template for Navbar. -->
-    <template id="multipleResumesLinkTemplate">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="resume-dropdown" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Resumes</a>
-            <ul class="dropdown-menu" id="resume-dropdown-menu" aria-labelledby="resume-dropdown"></ul>
-        </li>
     </template>
 
     <!-- Resume List Item Template for Navbar. -->
