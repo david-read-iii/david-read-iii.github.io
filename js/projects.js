@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
             addButtonToFooter(footer, project.links.codeUrl, "See Code");
         }
         if (project.links.demoUrl) {
-            addButtonToFooter(footer, project.links.codeUrl, "Demo It");
+            addButtonToFooter(footer, project.links.demoUrl, "Demo It");
         }
     });
 
