@@ -43,7 +43,11 @@
             <a class="nav-item nav-link" href="/">Home</a>
             <a class="nav-item nav-link active" href="about.html">About</a>
             <a class="nav-item nav-link" href="projects.html">Projects</a>
-            <div id="resume-nav-item-container"></div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="resume-dropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">Resumes</a>
+                <ul class="dropdown-menu" id="resume-dropdown-menu" aria-labelledby="resume-dropdown"></ul>
+            </li>
             <a class="nav-item nav-link" href="contact.html">Contact</a>
         </div>
 
@@ -106,6 +110,13 @@
         </a>
 
     </footer>
+
+    <!-- Resume List Item Template for Navbar. -->
+    <template id="resumeListItemTemplate">
+        <li>
+            <a class="dropdown-item" id="resume-link" target="_blank" rel="noreferrer noopener"></a>
+        </li>
+    </template>
 
 </body>
 
