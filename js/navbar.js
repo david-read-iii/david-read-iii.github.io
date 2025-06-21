@@ -1,83 +1,54 @@
 /**
- * Sets up the content within the resume nav item container. If only one resume is given, will display a
- * single Resume link. If more than one resume is given, will display a dropdown where a specific resume
- * may be selected.
- * 
- * @param {Object[]} resumes - The resumes to display.
+ * Renders resume navigation links into the resume nav item container.
+ * - If there is only one resume, it creates a single "Resume" link.
+ * - If there are multiple resumes, it creates a dropdown menu allowing users to select one.
+ *
+ * @param {Object[]} resumes - An array of resume objects to display.
+ * @param {string} resumes[].name - The display name of the resume.
+ * @param {string} resumes[].url - The URL pointing to the resume PDF.
  */
 function setupResumeNavItemContainer(resumes) {
 
-    var resumeNavItemContainer = document.getElementById("resume-nav-item-container");
+    const resumeNavItemContainer = document.getElementById("resume-nav-item-container");
 
     if (resumes.length > 1) {
-        // Setup outer li tag.
-        var outerListItem = document.createElement("li");
-        outerListItem.setAttribute("class", "nav-item dropdown");
-
+        const template = document.getElementById("multipleResumesLinkTemplate");
+        const outerListItem = template.content.cloneNode(true).querySelector("li");
         resumeNavItemContainer.appendChild(outerListItem);
-
-        // Setup resume button.
-        var resumesLink = document.createElement("a");
-        resumesLink.setAttribute("class", "nav-link dropdown-toggle");
-        resumesLink.setAttribute("href", "#");
-        resumesLink.setAttribute("id", "resume-dropdown");
-        resumesLink.setAttribute("role", "button");
-        resumesLink.setAttribute("data-bs-toggle", "dropdown");
-        resumesLink.setAttribute("aria-expanded", "false");
-        resumesLink.textContent = "Resumes";
-
-        outerListItem.appendChild(resumesLink);
-
-        // Setup ul tag.
-        var resumeDropdownMenu = document.createElement("ul");
-        resumeDropdownMenu.setAttribute("class", "dropdown-menu");
-        resumeDropdownMenu.setAttribute("id", "resume-dropdown-menu");
-        resumeDropdownMenu.setAttribute("aria-labelledby", "resume-dropdown");
-
-        outerListItem.appendChild(resumeDropdownMenu);
-
-        // Add an item in the resume dropdown menu for each resume in the resumes array.
-        for (var i = 0; i < resumes.length; i++) {
-            addItemToResumeDropdownMenu(resumeDropdownMenu, resumes[i]);
-        }
+        const resumeDropdownMenu = outerListItem.querySelector("#resume-dropdown-menu");
+        resumes.forEach(resume => { addItemToResumeDropdownMenu(resumeDropdownMenu, resume) });
     } else { // resumes.length == 1
-        var resumeLink = document.createElement("a");
-        resumeLink.setAttribute("class", "nav-item nav-link");
+        const template = document.getElementById("singleResumeLinkTemplate");
+        const resumeLink = template.content.cloneNode(true).querySelector("a");
         resumeLink.setAttribute("href", resumes[0].url);
-        resumeLink.setAttribute("target", "_blank");
-        resumeLink.setAttribute("rel", "noreferrer noopener");
-        resumeLink.textContent = "Resume";
-
         resumeNavItemContainer.appendChild(resumeLink);
     }
 }
 
 /**
- * Adds a dropdown item representing the passed resume object to the resume dropdown menu.
- * 
- * @param {HTMLUListElement} dropdownMenu - A reference to the resume dropdown menu.
- * @param {Object} resume - The resume object to add.
+ * Appends a single resume link as a dropdown menu item within the resume dropdown.
+ *
+ * @param {HTMLUListElement} resumeDropdownMenu - The `<ul>` element where the dropdown items will be added.
+ * @param {Object} resume - The resume object to represent.
+ * @param {string} resume.name - The label to display for this resume in the dropdown.
+ * @param {string} resume.url - The URL to link to when the dropdown item is clicked.
  */
-function addItemToResumeDropdownMenu(dropdownMenu, resume) {
-    var htmlLiElement = document.createElement("li");
-
-    var htmlAElement = document.createElement("a");
-    htmlAElement.setAttribute("class", "dropdown-item");
-    htmlAElement.setAttribute("href", resume.url);
-    htmlAElement.setAttribute("target", "_blank");
-    htmlAElement.setAttribute("rel", "noreferrer noopener");
-    htmlAElement.textContent = resume.name;
-
-    htmlLiElement.appendChild(htmlAElement);
-    dropdownMenu.appendChild(htmlLiElement);
+function addItemToResumeDropdownMenu(resumeDropdownMenu, resume) {
+    const template = document.getElementById("resumeListItemTemplate");
+    const listItem = template.content.cloneNode(true).querySelector("li");
+    const link = listItem.querySelector("#resume-link");
+    link.setAttribute("href", resume.url);
+    link.textContent = resume.name;
+    resumeDropdownMenu.appendChild(listItem);
 }
 
+/**
+ * Initializes the resume navigation on page load by fetching resume data from a remote database.
+ */
 document.addEventListener("DOMContentLoaded", () => {
     fetch("https://david-read-portfolio-default-rtdb.firebaseio.com/resumes.json")
         .then(response => response.json())
-        .then(resumes => {
-            setupResumeNavItemContainer(resumes);
-        })
+        .then(resumes => { setupResumeNavItemContainer(resumes) })
         .catch(error => {
             console.error("Failed to fetch resumes:", error);
         });

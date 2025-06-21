@@ -93,6 +93,27 @@
 
     </footer>
 
+    <!-- Single Resume Link Template for Navbar. -->
+    <template id="singleResumeLinkTemplate">
+        <a class="nav-item nav-link" target="_blank" rel="noreferrer noopener">Resume</a>
+    </template>
+
+    <!-- Multiple Resumes Link Template for Navbar. -->
+    <template id="multipleResumesLinkTemplate">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="resume-dropdown" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Resumes</a>
+            <ul class="dropdown-menu" id="resume-dropdown-menu" aria-labelledby="resume-dropdown"></ul>
+        </li>
+    </template>
+
+    <!-- Resume List Item Template for Navbar. -->
+    <template id="resumeListItemTemplate">
+        <li>
+            <a class="dropdown-item" id="resume-link" target="_blank" rel="noreferrer noopener"></a>
+        </li>
+    </template>
+
 </body>
 
 </html>
