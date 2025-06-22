@@ -20,10 +20,6 @@
     <!-- Import Font Awesome library JS. -->
     <script src="https://kit.fontawesome.com/b06b68bfd6.js" crossorigin="anonymous"></script>
 
-    <!-- Import jQuery library JS.-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
     <!-- Import developer CSS. -->
     <link href="css/global.css" rel="stylesheet">
     <link href="css/contact.css" rel="stylesheet">
@@ -35,7 +31,7 @@
 
 </head>
 
-<body class="h-100 d-flex flex-column text-white">
+<body class="d-flex flex-column min-vh-100 text-white">
 
     <!-- Nav header. -->
     <nav class="mb-auto p-3 navbar navbar-expand-sm navbar-dark">
@@ -48,17 +44,27 @@
             <a class="nav-item nav-link" href="/">Home</a>
             <a class="nav-item nav-link" href="about.html">About</a>
             <a class="nav-item nav-link" href="projects.html">Projects</a>
-            <div id="resume-nav-item-container"></div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="resume-dropdown" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">Resumes</a>
+                <ul class="dropdown-menu" id="resume-dropdown-menu" aria-labelledby="resume-dropdown"></ul>
+            </li>
             <a class="nav-item nav-link active" href="contact.html">Contact</a>
         </div>
 
     </nav>
 
     <!-- Main content. -->
-    <main class="p-5 text-center">
+    <main class="p-5 container text-center my-auto">
+
+        <!-- Info icon. -->
+        <div class="text-center mb-5">
+            <i class="far fa-5x fa-address-book" aria-hidden="true"></i>
+        </div>
+
 
         <!-- Greeting. -->
-        <h3>Always happy to chat about cool projects or new opportunities.</h3>
+        <h3>Always happy to chat about exciting projects, collaborations, or new opportunities.</h3>
         <p class="mb-3">You can reach me at <a href="" id="email-link"
                 onclick="copyEmailToClipboard()">david.read.me@gmail.com</a>!</p>
 
@@ -73,23 +79,32 @@
 
         <!-- Email button. -->
         <a class="btn btn-outline-light btn-floating" href="mailto:david.read.me@gmail.com" role="button"
-            target="_blank" rel="noreferrer noopener" title="Email me">
+            target="_blank" rel="noreferrer noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Email me">
             <i class="fas fa-envelope"></i>
         </a>
 
         <!-- LinkedIn button. -->
         <a class="btn btn-outline-light btn-floating" href="https://www.linkedin.com/in/david-read-iii/" role="button"
-            target="_blank" rel="noreferrer noopener" title="See my LinkedIn">
+            target="_blank" rel="noreferrer noopener" data-bs-toggle="tooltip" data-bs-placement="top"
+            title="See my LinkedIn">
             <i class="fab fa-linkedin-in"></i>
         </a>
 
         <!-- GitHub button. -->
         <a class="btn btn-outline-light btn-floating" href="https://github.com/david-read-iii" role="button"
-            target="_blank" rel="noreferrer noopener" title="See my GitHub">
+            target="_blank" rel="noreferrer noopener" data-bs-toggle="tooltip" data-bs-placement="top"
+            title="See my GitHub">
             <i class="fab fa-github"></i>
         </a>
 
     </footer>
+
+    <!-- Resume List Item Template for Navbar. -->
+    <template id="resumeListItemTemplate">
+        <li>
+            <a class="dropdown-item" id="resume-link" target="_blank" rel="noreferrer noopener"></a>
+        </li>
+    </template>
 
 </body>
 
