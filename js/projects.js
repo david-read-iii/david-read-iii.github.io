@@ -170,23 +170,61 @@ document.addEventListener("DOMContentLoaded", function () {
         const project = JSON.parse(button.getAttribute("data-project"));
 
         // Setup Carousel.
+        const carousel = seeMoreModal.querySelector("#carousel");
         const carouselInner = seeMoreModal.querySelector("#carouselInner");
-        project.media.forEach((mediaItem, index) => {
-            addCarouselItemToCarouselInner(carouselInner, mediaItem);
-        });
-
-        // Set active carousel item.
-        carouselInner.firstElementChild.classList.add("active");
-
-        // Disable auto-scrolling of carousel.
-        const carouselElement = seeMoreModal.querySelector('#carousel');
-        const carouselInstance = bootstrap.Carousel.getInstance(carouselElement)
-            || new bootstrap.Carousel(carouselElement, { interval: false, ride: false });
-        carouselInstance.pause();
-
-        // Set indicator text.
         const carouselIndicatorText = seeMoreModal.querySelector("#carouselIndicatorText");
-        setCarouselIndicatorText(carouselIndicatorText, carouselInner);
+        const carouselPrev = seeMoreModal.querySelector("#carouselPrevBtn");
+        const carouselNext = seeMoreModal.querySelector("#carouselNextBtn");
+
+        // Clear carousel content and indicator.
+        carouselInner.innerHTML = '';
+        carouselIndicatorText.textContent = "";
+
+        if (Array.isArray(project.media) && project.media.length > 0) {
+            // Show carousel and arrows.
+            carousel.style.display = "";
+            if (carouselPrev) carouselPrev.style.display = "";
+            if (carouselNext) carouselNext.style.display = "";
+
+            // Also show their parent containers if present
+            if (carouselPrev && carouselPrev.parentElement) carouselPrev.parentElement.style.display = "";
+            if (carouselNext && carouselNext.parentElement) carouselNext.parentElement.style.display = "";
+
+            project.media.forEach((mediaItem, index) => {
+                addCarouselItemToCarouselInner(carouselInner, mediaItem);
+            });
+
+            // Set active carousel item.
+            if (carouselInner.firstElementChild) {
+                carouselInner.firstElementChild.classList.add("active");
+            }
+
+            // Disable auto-scrolling of carousel.
+            const carouselElement = carousel;
+            const carouselInstance = bootstrap.Carousel.getInstance(carouselElement)
+                || new bootstrap.Carousel(carouselElement, { interval: false, ride: false });
+            carouselInstance.pause();
+
+            // Set indicator text.
+            setCarouselIndicatorText(carouselIndicatorText, carouselInner);
+        } else {
+            // Hide carousel and arrows if no media.
+            carousel.style.display = "none";
+            if (carouselPrev) {
+                carouselPrev.style.display = "none";
+                if (carouselPrev.parentElement) carouselPrev.parentElement.style.display = "none";
+            }
+            if (carouselNext) {
+                carouselNext.style.display = "none";
+                if (carouselNext.parentElement) carouselNext.parentElement.style.display = "none";
+            }
+            // Try hiding all .carousel-control-prev and .carousel-control-next in the modal as a fallback
+            seeMoreModal.querySelectorAll('.carousel-control-prev, .carousel-control-next').forEach(el => {
+                el.style.display = 'none';
+                if (el.parentElement) el.parentElement.style.display = 'none';
+            });
+            carouselIndicatorText.textContent = "";
+        }
 
         // Set text on modal body.
         seeMoreModal.querySelector("#nameLabel").textContent = project.name;
