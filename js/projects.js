@@ -133,35 +133,49 @@ function setCarouselIndicatorText(carouselIndicatorText, carouselInner) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Fetch and render projects
-    fetch("https://david-read-portfolio-default-rtdb.firebaseio.com/projects.json")
-        .then(response => response.json())
-        .then(projects => {
-            const cardContainerLayout = document.getElementById("card-container");
-            for (let i = 0; i < projects.length; i++) {
-                addProjectToCardContainer(cardContainerLayout, projects[i]);
-            }
 
-            // If the URL refers to a particular card, wait for all images to load. Then scroll to it.
-            const params = new URLSearchParams(window.location.search);
-            const projectParam = params.get("project");
-            if (projectParam != null) {
-                let imagesLoaded = 0;
-                const totalImages = projects.length;
+    // Fetch featuredProjectIds and projects in parallel
+    Promise.all([
+        fetch("https://david-read-portfolio-default-rtdb.firebaseio.com/featuredProjectIds.json").then(r => r.json()),
+        fetch("https://david-read-portfolio-default-rtdb.firebaseio.com/projects.json").then(r => r.json())
+    ]).then(([featuredProjectIds, projects]) => {
+        // Render Featured Projects
+        const featuredContainer = document.getElementById("featured-container");
+        if (Array.isArray(featuredProjectIds) && featuredContainer) {
+            // Map project ids to project objects in the order of featuredProjectIds
+            featuredProjectIds.forEach(fid => {
+                const project = projects.find(p => p.id === fid);
+                if (project) {
+                    addProjectToCardContainer(featuredContainer, project);
+                }
+            });
+        }
 
-                document.querySelectorAll("img").forEach((img) => {
-                    const preload = new Image();
-                    preload.onload = () => {
-                        imagesLoaded++;
-                        if (imagesLoaded === totalImages) {
-                            highlightAndScrollIntoCard(projectParam);
-                        }
-                    };
-                    preload.src = img.src;
-                });
-            }
-        })
-        .catch(error => console.error("Failed to fetch projects:", error));
+        // Render All Projects
+        const cardContainerLayout = document.getElementById("card-container");
+        for (let i = 0; i < projects.length; i++) {
+            addProjectToCardContainer(cardContainerLayout, projects[i]);
+        }
+
+        // If the URL refers to a particular card, wait for all images to load. Then scroll to it.
+        const params = new URLSearchParams(window.location.search);
+        const projectParam = params.get("project");
+        if (projectParam != null) {
+            let imagesLoaded = 0;
+            const totalImages = projects.length;
+
+            document.querySelectorAll("img").forEach((img) => {
+                const preload = new Image();
+                preload.onload = () => {
+                    imagesLoaded++;
+                    if (imagesLoaded === totalImages) {
+                        highlightAndScrollIntoCard(projectParam);
+                    }
+                };
+                preload.src = img.src;
+            });
+        }
+    }).catch(error => console.error("Failed to fetch projects or featuredProjectIds:", error));
 
     // See More Modal show modal event listener.
     const seeMoreModal = document.getElementById("seeMoreModal");
